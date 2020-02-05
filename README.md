@@ -1,6 +1,6 @@
 # cop-3331-project-1
 
-REQUIREMENTS
+##REQUIREMENTS
 
 Write a program to simulate a uniform (meaning every number is equally likely to appear as the next) integer random number.  Your program will be a console application which will simulate a 6-faced die. You will “throw” your simulated die N times. The number N should be obtained by prompting the user on “How many rolls?”
 
