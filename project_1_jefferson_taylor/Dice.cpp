@@ -25,7 +25,11 @@ void Dice::setRollRange() {
 
 // returns a roll value for the given amount of dice
 int Dice::Roll() {
-	return rand() % (highest_roll - lowest_roll + 1) + lowest_roll;
+	int roll_total = 0;
+	for (int i = 0; i < dice_amount; i++) {
+		roll_total += rand() % 6 + 1;
+	}
+	return roll_total;
 }
 
 //temp function, delete later

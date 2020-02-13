@@ -6,6 +6,7 @@
 class Histogram
 {
 public:
+	Histogram();
 	Histogram(int start, int stop, int step);
 	void displayHisto();
 	void addValue(int value);
@@ -18,7 +19,7 @@ private:
 	int step{ 1 };
 	std::vector<int> histogram_count;
 
-	double scaleHistoValues();
+	double scaleHistoValue(int value);
 	void resizeHistoVector();
 };
 

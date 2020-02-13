@@ -2,6 +2,8 @@
 #include <iostream>
 #include "Histogram.h"
 
+Histogram::Histogram() {}
+
 Histogram::Histogram(int start, int stop, int step)
 	: start(start), stop(stop), step(step)
 {
@@ -10,10 +12,14 @@ Histogram::Histogram(int start, int stop, int step)
 
 // prints out histogram to console
 void Histogram::displayHisto() {
-	int x_size = static_cast<int>(scaleHistoValues());
 	for (int i = 0; i < (stop - start + 1); i++) {
-		std::cout << (i + start) << ": " << std::endl;
+		std::cout << (i + start) << ": " << histogram_count[i] << " " << scaleHistoValue(histogram_count[i]) << " ";
+		for (int j = 0; j < scaleHistoValue(histogram_count[i]); j++) {
+			std::cout << "X";
+		}
+		std::cout << std::endl;
 	}
+	std::cout << std::endl;
 }
 
 // adds a single value to the histogram object vector
@@ -28,11 +34,12 @@ void Histogram::setHistoRange(int start, int stop, int step) {
 	this->stop = stop;
 	this->step = step;
 
+	resizeHistoVector();
 	std::fill(histogram_count.begin(), histogram_count.end(), 0);
 }
 
-// finds the scaling factor for histogram data
-double Histogram::scaleHistoValues() {
+// finds the scaling factor for histogram value
+double Histogram::scaleHistoValue(int value) {
 	int total_count = 0, min = histogram_count[0], max = 0;
 
 	for (int value_count : histogram_count) {
@@ -46,7 +53,7 @@ double Histogram::scaleHistoValues() {
 		}
 	}
 
-	return (59.0 * (total_count - min) / (max - min)) + 1;
+	return ((60 - 1) * (value - min) / (max - min)) + 1;
 }
 
 // sizes histogram vector to the amount of different values
