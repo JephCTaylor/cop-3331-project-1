@@ -15,6 +15,10 @@ int main()
 
 	std::cout << dice.getDiceAmount() << " " << dice2.getDiceAmount() << std::endl;
 	std::cout << dice.Roll() << " " << dice.Roll() << " " << dice.Roll() << std::endl;
+	std::cout << dice2.Roll() << " " << dice2.Roll() << " " << dice2.Roll() << std::endl;
+	dice.setDiceAmount(3);
+	dice2.setDiceAmount(4);
+	std::cout << dice.getDiceAmount() << " " << dice2.getDiceAmount() << std::endl;
 	std::cout << dice.Roll() << " " << dice.Roll() << " " << dice.Roll() << std::endl;
 	std::cout << dice2.Roll() << " " << dice2.Roll() << " " << dice2.Roll() << std::endl;
 }
