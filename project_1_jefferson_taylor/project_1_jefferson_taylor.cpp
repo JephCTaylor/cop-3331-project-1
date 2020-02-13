@@ -3,6 +3,15 @@
 #include "Dice.h"
 #include "Histogram.h"
 
+void getDiceStats(int dice_amount, int rolls, Dice dice, Histogram histo) {
+	dice.setDiceAmount(dice_amount);
+	histo.setHistoRange(dice.getLowestRoll(), dice.getHighestRoll(), 1);
+	for (int i = 0; i < 6000; i++) {
+		histo.addValue(dice.Roll());
+	}
+	histo.displayHisto();
+}
+
 int main()
 {
 	int user_seed;
@@ -15,23 +24,7 @@ int main()
 	Dice dice;
 	Histogram dice_histogram;
 
-	dice_histogram.setHistoRange(dice.getLowestRoll(), dice.getHighestRoll(), 1);
-	for (int i = 0; i < 10000; i++) {
-		dice_histogram.addValue(dice.Roll());
-	}
-	dice_histogram.displayHisto();
-
-	dice.setDiceAmount(2);
-	dice_histogram.setHistoRange(dice.getLowestRoll(), dice.getHighestRoll(), 1);
-	for (int i = 0; i < 10000; i++) {
-		dice_histogram.addValue(dice.Roll());
-	}
-	dice_histogram.displayHisto();
-
-	dice.setDiceAmount(3);
-	dice_histogram.setHistoRange(dice.getLowestRoll(), dice.getHighestRoll(), 1);
-	for (int i = 0; i < 10000; i++) {
-		dice_histogram.addValue(dice.Roll());
-	}
-	dice_histogram.displayHisto();
+	getDiceStats(1, 6000, dice, dice_histogram);
+	getDiceStats(2, 6000, dice, dice_histogram);
+	getDiceStats(3, 6000, dice, dice_histogram);
 }
