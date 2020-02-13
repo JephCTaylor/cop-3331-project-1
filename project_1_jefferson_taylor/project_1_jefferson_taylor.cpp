@@ -2,16 +2,19 @@
 //
 
 #include <stdlib.h>
-#include <time.h>
 #include <iostream>
 #include "Dice.h"
 
 int main()
 {
-	srand(time(NULL));
-	std::cout << "Hello, world!";
-	Dice dice{ 1 };
+	int user_seed;
+	Dice dice;
 	Dice dice2{ 2 };
+
+	std::cout << "Enter a seed value for the dice rolls: " << std::endl;
+	std::cin >> user_seed;
+
+	srand(user_seed);
 
 	std::cout << dice.getDiceAmount() << " " << dice2.getDiceAmount() << std::endl;
 	std::cout << dice.Roll() << " " << dice.Roll() << " " << dice.Roll() << std::endl;

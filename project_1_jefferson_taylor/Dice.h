@@ -3,19 +3,20 @@
 
 class Dice
 {
-private:
-	int dice_amount;
-	int lowest_roll;
-	int highest_roll;
-
 public:
-	//Dice();
+	Dice();
 	Dice(int dice_amount);
-	//Dice(int dice_amount, long int seed);
 	void setDiceAmount(int dice_amount);
 	void setRollRange();
-	int getDiceAmount();
 	int Roll();
+	int getDiceAmount();
+	int getLowestRoll();
+	int getHighestRoll();
+
+private:
+	int dice_amount{ 1 };
+	int lowest_roll{ 1 };
+	int highest_roll{ 6 };
 };
 
 #endif

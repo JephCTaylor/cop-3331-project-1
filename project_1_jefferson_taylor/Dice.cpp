@@ -2,9 +2,7 @@
 #include <time.h>
 #include "Dice.h"
 
-int dice_amount{ 1 };
-int lowest_roll{ 1 };
-int highest_roll{ 6 };
+Dice::Dice() {}
 
 // custom constructor for dice that sets up roll range
 Dice::Dice(int dice_amount) 
@@ -33,4 +31,12 @@ int Dice::Roll() {
 //temp function, delete later
 int Dice::getDiceAmount() {
 	return dice_amount;
+}
+
+int Dice::getLowestRoll() {
+	return lowest_roll;
+}
+
+int Dice::getHighestRoll() {
+	return highest_roll;
 }
