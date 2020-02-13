@@ -1,5 +1,6 @@
 #ifndef HISTOGRAM_H
 #define HISTOGRAM_H
+#define HISTO_BAR_SCALE 6
 
 #include <vector>
 

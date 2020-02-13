@@ -18,6 +18,7 @@ int main()
 
 	std::cout << "Enter a seed value for the dice rolls: " << std::endl;
 	std::cin >> user_seed;
+	std::cout << std::endl;
 
 	srand(user_seed);
 

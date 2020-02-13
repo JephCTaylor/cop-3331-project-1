@@ -13,8 +13,8 @@ Histogram::Histogram(int start, int stop, int step)
 // prints out histogram to console
 void Histogram::displayHisto() {
 	for (int i = 0; i < (stop - start + 1); i++) {
-		std::cout << (i + start) << ": " << histogram_count[i] << " " << scaleHistoValue(histogram_count[i]) << " ";
-		for (int j = 0; j < scaleHistoValue(histogram_count[i]); j++) {
+		std::cout << (i + start) << ":\t";
+		for (int j = 0; j < (scaleHistoValue(histogram_count[i] * HISTO_BAR_SCALE)); j++) {
 			std::cout << "X";
 		}
 		std::cout << std::endl;
@@ -53,7 +53,7 @@ double Histogram::scaleHistoValue(int value) {
 		}
 	}
 
-	return ((60 - 1) * (value - min) / (max - min)) + 1;
+	return (59.0 / total_count * (value - total_count)) + 59;
 }
 
 // sizes histogram vector to the amount of different values
