@@ -4,12 +4,6 @@
 
 Histogram::Histogram() {}
 
-Histogram::Histogram(int start, int stop, int step)
-	: start(start), stop(stop), step(step)
-{
-	resizeHistoVector();
-}
-
 // prints out histogram to console
 void Histogram::displayHisto() {
 	for (int i = 0; i < (stop - start + 1); i++) {
@@ -60,8 +54,4 @@ double Histogram::scaleHistoValue(int value) {
 void Histogram::resizeHistoVector() {
 	int size = stop - start + 1;
 	histogram_count.resize(size, 0);
-}
-
-unsigned int Histogram::getHistoSize() {
-	return histogram_count.size();
 }

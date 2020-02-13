@@ -4,13 +4,6 @@
 
 Dice::Dice() {}
 
-// custom constructor for dice that sets up roll range
-Dice::Dice(int dice_amount) 
-	: dice_amount(dice_amount)
-{
-	setRollRange();
-}
-
 // changes amount of dice to given argument value and changes roll range
 void Dice::setDiceAmount(int dice_amount) {
 	this->dice_amount = dice_amount;
@@ -30,11 +23,6 @@ int Dice::Roll() {
 		roll_total += rand() % 6 + 1;
 	}
 	return roll_total;
-}
-
-//temp function, delete later
-int Dice::getDiceAmount() {
-	return dice_amount;
 }
 
 int Dice::getLowestRoll() {

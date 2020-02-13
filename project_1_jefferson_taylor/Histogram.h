@@ -8,11 +8,9 @@ class Histogram
 {
 public:
 	Histogram();
-	Histogram(int start, int stop, int step);
 	void displayHisto();
 	void addValue(int value);
 	void setHistoRange(int start, int stop, int step);
-	unsigned int getHistoSize();
 
 private:
 	int start{ 0 };

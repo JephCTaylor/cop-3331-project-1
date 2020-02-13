@@ -5,10 +5,8 @@ class Dice
 {
 public:
 	Dice();
-	Dice(int dice_amount);
 	void setDiceAmount(int dice_amount);
 	int Roll();
-	int getDiceAmount();
 	int getLowestRoll();
 	int getHighestRoll();
 
