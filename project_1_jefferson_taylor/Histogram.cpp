@@ -1,5 +1,6 @@
+#include <stdlib.h>
+#include <iostream>
 #include "Histogram.h"
-#include <algorithm>
 
 Histogram::Histogram(int start, int stop, int step)
 	: start(start), stop(stop), step(step)
@@ -10,6 +11,9 @@ Histogram::Histogram(int start, int stop, int step)
 // prints out histogram to console
 void Histogram::displayHisto() {
 	int x_size = static_cast<int>(scaleHistoValues());
+	for (int i = 0; i < (stop - start + 1); i++) {
+		std::cout << (i + start) << ": " << std::endl;
+	}
 }
 
 // adds a single value to the histogram object vector
@@ -41,8 +45,6 @@ double Histogram::scaleHistoValues() {
 			min = value_count;
 		}
 	}
-
-	auto minmax = std::minmax_element(histogram_count.begin(), histogram_count.end());
 
 	return (59.0 * (total_count - min) / (max - min)) + 1;
 }

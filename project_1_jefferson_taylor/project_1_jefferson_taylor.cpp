@@ -15,6 +15,10 @@ int main()
 	srand(user_seed);
 
 	Histogram dice_histogram{ dice.getLowestRoll(), dice.getHighestRoll(), 1 };
+	for (int i = 0; i < 6000; i++) {
+		dice_histogram.addValue(dice.Roll());
+	}
+	dice_histogram.displayHisto();
 	std::cout << dice_histogram.getHistoSize() << std::endl;
 
 	std::cout << dice.getDiceAmount() << " " << dice2.getDiceAmount() << std::endl;
