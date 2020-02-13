@@ -1,5 +1,4 @@
 #include <stdlib.h>
-#include <time.h>
 #include "Dice.h"
 
 Dice::Dice() {}

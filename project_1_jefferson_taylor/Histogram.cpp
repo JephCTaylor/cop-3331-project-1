@@ -1,5 +1,7 @@
 #include <stdlib.h>
 #include <iostream>
+#include <numeric>
+#include <algorithm>
 #include "Histogram.h"
 
 Histogram::Histogram() {}
@@ -34,19 +36,7 @@ void Histogram::setHistoRange(int start, int stop, int step) {
 
 // finds the scaling factor for histogram value
 double Histogram::scaleHistoValue(int value) {
-	int total_count = 0, min = histogram_count[0], max = 0;
-
-	for (int value_count : histogram_count) {
-		total_count += value_count;
-
-		if (value_count > max) {
-			max = value_count;
-		}
-		if (value_count < min) {
-			min = value_count;
-		}
-	}
-
+	int total_count = std::accumulate(histogram_count.begin(), histogram_count.end(), 0);
 	return (59.0 / total_count * (value - total_count)) + 59;
 }
 

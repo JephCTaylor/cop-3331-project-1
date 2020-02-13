@@ -2,15 +2,8 @@
 #include <iostream>
 #include "Dice.h"
 #include "Histogram.h"
+#include "GameStats.h"
 
-void getDiceStats(int dice_amount, int rolls, Dice dice, Histogram histo) {
-	dice.setDiceAmount(dice_amount);
-	histo.setHistoRange(dice.getLowestRoll(), dice.getHighestRoll(), 1);
-	for (int i = 0; i < 6000; i++) {
-		histo.addValue(dice.Roll());
-	}
-	histo.displayHisto();
-}
 
 int main()
 {
@@ -23,9 +16,10 @@ int main()
 	srand(user_seed);
 
 	Dice dice;
-	Histogram dice_histogram;
+	Histogram histo;
+	GameStats stats;
 
-	getDiceStats(1, 6000, dice, dice_histogram);
-	getDiceStats(2, 6000, dice, dice_histogram);
-	getDiceStats(3, 6000, dice, dice_histogram);
+	stats.displayDiceStats(1, 6000, dice, histo);
+	stats.displayDiceStats(2, 6000, dice, histo);
+	stats.displayDiceStats(3, 6000, dice, histo);
 }
