@@ -1,13 +1,22 @@
 // project_1_jefferson_taylor.cpp : This file contains the 'main' function. Program execution begins and ends there.
 //
 
+#include <stdlib.h>
+#include <time.h>
 #include <iostream>
 #include "Dice.h"
 
 int main()
 {
+	srand(time(NULL));
 	std::cout << "Hello, world!";
 	Dice dice{ 1 };
+	Dice dice2{ 2 };
+
+	std::cout << dice.getDiceAmount() << " " << dice2.getDiceAmount() << std::endl;
+	std::cout << dice.Roll() << " " << dice.Roll() << " " << dice.Roll() << std::endl;
+	std::cout << dice.Roll() << " " << dice.Roll() << " " << dice.Roll() << std::endl;
+	std::cout << dice2.Roll() << " " << dice2.Roll() << " " << dice2.Roll() << std::endl;
 }
 
 // Run program: Ctrl + F5 or Debug > Start Without Debugging menu
