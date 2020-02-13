@@ -18,7 +18,7 @@ void Histogram::displayHisto() {
 
 // adds a single value to the histogram object vector
 void Histogram::addValue(int value) {
-	histogram_count[value]++;
+	histogram_count[value - start]++;
 }
 
 // changes the range of values that the histogram will store and
@@ -33,7 +33,7 @@ void Histogram::setHistoRange(int start, int stop, int step) {
 
 // finds the scaling factor for histogram data
 double Histogram::scaleHistoValues() {
-	int total_count, min = histogram_count[0], max = 0;
+	int total_count = 0, min = histogram_count[0], max = 0;
 
 	for (int value_count : histogram_count) {
 		total_count += value_count;
