@@ -7,7 +7,6 @@ public:
 	Dice();
 	Dice(int dice_amount);
 	void setDiceAmount(int dice_amount);
-	void setRollRange();
 	int Roll();
 	int getDiceAmount();
 	int getLowestRoll();
@@ -17,6 +16,8 @@ private:
 	int dice_amount{ 1 };
 	int lowest_roll{ 1 };
 	int highest_roll{ 6 };
+
+	void setRollRange();
 };
 
 #endif

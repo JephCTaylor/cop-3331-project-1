@@ -4,6 +4,7 @@
 #include <stdlib.h>
 #include <iostream>
 #include "Dice.h"
+#include "Histogram.h"
 
 int main()
 {
@@ -15,6 +16,9 @@ int main()
 	std::cin >> user_seed;
 
 	srand(user_seed);
+
+	Histogram dice_histogram{ dice.getLowestRoll(), dice.getHighestRoll(), 1 };
+	std::cout << dice_histogram.getHistoSize() << std::endl;
 
 	std::cout << dice.getDiceAmount() << " " << dice2.getDiceAmount() << std::endl;
 	std::cout << dice.Roll() << " " << dice.Roll() << " " << dice.Roll() << std::endl;
