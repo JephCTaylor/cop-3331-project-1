@@ -1,27 +1,26 @@
 #ifndef HISTOGRAM_H
 #define HISTOGRAM_H
-#define HISTO_BAR_SCALE 3
+#define HISTO_BAR_Scale 3
 
 #include <vector>
 
-class Histogram
-{
-public:
-	Histogram();
-	void displayValueHisto();
-	void addValue(int value);
-	void setHistoRange(int start, int stop);
+class Histogram {
+ public:
+  Histogram();
+  void DisplayValueHisto();
+  void AddValue(int value);
+  void SetHistoRange(int start_, int stop_);
 
-private:
-	int start{ 0 };
-	int stop{ 0 };
-	std::vector<int> histogram_count;
-	std::vector<int> value_list;
+ private:
+  int start_{0};
+  int stop_{0};
+  std::vector<int> histogram_count_;
+  std::vector<int> value_list_;
 
-	void displayValueCounts();
-	void displayHisto();
-	double scaleHistoValue(int value);
-	void resizeHistoVector();
+  void DisplayValueCounts();
+  void DisplayHisto();
+  double ScaleHistoValue(int value);
+  void ResizeHistoVector();
 };
 
 #endif

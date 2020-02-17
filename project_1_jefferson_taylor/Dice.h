@@ -3,24 +3,23 @@
 
 #include <vector>
 
-class Dice
-{
-public:
-	Dice();
-	Dice(int dice_amount);
-	int getDiceAmount();
-	void setDiceAmount(int dice_amount);
-	int Roll();
-	int getLowestRoll();
-	int getHighestRoll();
-	std::vector<int> roll_log;
+class Dice {
+ public:
+  Dice();
+  Dice(int dice_amount_);
+  int GetDiceAmount();
+  void SetDiceAmount(int dice_amount_);
+  int Roll();
+  int GetLowestRoll();
+  int GetHighestRoll();
+  std::vector<int> roll_log_;
 
-private:
-	int dice_amount{ 1 };
-	int lowest_roll{ 1 };
-	int highest_roll{ 6 };
+ private:
+  int dice_amount_{1};
+  int lowest_roll_{1};
+  int highest_roll_{6};
 
-	void setRollRange();
+  void SetRollRange();
 };
 
 #endif

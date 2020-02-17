@@ -4,14 +4,14 @@
 #include "Dice.h"
 #include "Histogram.h"
 
-class GameStats
-{
-public:
-	void displayDiceStats(int dice_amount, int rolls, Dice& dice, Histogram& histo);
-	void combineDiceRolls(Dice& dice1, Dice& dice2, Histogram& histo);
+class GameStats {
+ public:
+  void DisplayDiceStats(int dice_amount_, int rolls, Dice &dice,
+                        Histogram &histo);
+  void CombineDiceRolls(Dice &dice1, Dice &dice2, Histogram &histo);
 
-private:
-	void addRollsToHisto(Dice& dice, Histogram& histo);
+ private:
+  void AddRollsToHisto(Dice &dice, Histogram &histo);
 };
 
 #endif

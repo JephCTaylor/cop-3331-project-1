@@ -1,52 +1,44 @@
-#include <stdlib.h>
 #include "Dice.h"
+
+#include <stdlib.h>
 
 Dice::Dice() {}
 
-//custom constructor thats initialized with specified dice count
-Dice::Dice(int dice_amount)
-	: dice_amount(dice_amount)
-{
-	setRollRange();
+// custom constructor thats initialized with specified dice count
+Dice::Dice(int dice_amount) : dice_amount_(dice_amount) { SetRollRange(); }
+
+int Dice::GetDiceAmount() { return dice_amount_; }
+
+// changes amount of dice to given argument value and changes roll range
+void Dice::SetDiceAmount(int dice_amount_) {
+  this->dice_amount_ = dice_amount_;
+  SetRollRange();
 }
 
-int Dice::getDiceAmount() {
-	return dice_amount;
+// Sets the maximum and minimum Combined roll that the specified amount of dice
+// can be
+void Dice::SetRollRange() {
+  lowest_roll_ = dice_amount_;
+  highest_roll_ = dice_amount_ * 6;
 }
 
-//changes amount of dice to given argument value and changes roll range
-void Dice::setDiceAmount(int dice_amount) {
-	this->dice_amount = dice_amount;
-	setRollRange();
-}
-
-//sets the maximum and minimum combined roll that the specified amount of dice can be
-void Dice::setRollRange() {
-	lowest_roll = dice_amount;
-	highest_roll = dice_amount * 6;
-}
-
-//returns a roll value for the given amount of dice, and stores the value
-//in the roll_log of the dice object
+// returns a roll value for the given amount of dice, and stores the value
+// in the roll_log_ of the dice object
 int Dice::Roll() {
-	int roll_total = 0;
-	for (int i = 0; i < dice_amount; i++) {
-		roll_total += rand() % highest_roll + 1;
-	}
-	roll_log.push_back(roll_total);
-	return roll_total;
+  int roll_total = 0;
+  for (int i = 0; i < dice_amount_; i++) {
+    roll_total += rand() % highest_roll_ + 1;
+  }
+  roll_log_.push_back(roll_total);
+  return roll_total;
 }
 
-int Dice::getLowestRoll() {
-	return lowest_roll;
-}
+int Dice::GetLowestRoll() { return lowest_roll_; }
 
-int Dice::getHighestRoll() {
-	return highest_roll;
-}
+int Dice::GetHighestRoll() { return highest_roll_; }
 
-//example of how to return a vector by value 
-//std::vector<int> Dice::getRollLog() {
-//    std::vector<int> result = roll_log;
+// example of how to return a vector by value
+// std::vector<int> Dice::GetRollLog() {
+//    std::vector<int> result = roll_log_;
 //    return result;
 //}
