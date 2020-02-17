@@ -34,7 +34,7 @@ void Histogram::DisplayValueCounts() {
 void Histogram::DisplayHisto() {
   for (int i = 0; i < (stop_ - start_ + 1); i++) {
     std::cout << (i + start_) << ":\t";
-    for (int j = 0; j < (ScaleHistoValue(histogram_count_[i] * HISTO_BAR_Scale));
+    for (int j = 0; j < (ScaleHistoValue(histogram_count_[i] * HISTO_BAR_SCALE));
          j++) {
       std::cout << "X";
     }
