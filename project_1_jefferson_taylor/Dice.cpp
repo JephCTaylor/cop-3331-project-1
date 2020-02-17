@@ -26,11 +26,12 @@ void Dice::setRollRange() {
 	highest_roll = dice_amount * 6;
 }
 
-// returns a roll value for the given amount of dice
+// returns a roll value for the given amount of dice, and stores the value
+// in the roll_log of the dice object
 int Dice::Roll() {
 	int roll_total = 0;
 	for (int i = 0; i < dice_amount; i++) {
-		roll_total += rand() % 6 + 1;
+		roll_total += rand() % highest_roll + 1;
 	}
 	roll_log.push_back(roll_total);
 	return roll_total;
