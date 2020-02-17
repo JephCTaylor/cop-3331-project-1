@@ -17,6 +17,7 @@ void GameStats::displayDiceStats(int dice_amount, int rolls, Dice& dice, Histogr
 //combines dice rolls sequentially, as if the dice were rolled with the values
 //totaled together. It's then added to a histogram class so the data can be displayed
 //The dice must have been rolled the same amount of times for this function to work
+//might want to add a try catch later
 void GameStats::combineDiceRolls(Dice& dice1, Dice& dice2, Histogram& histo) {
 	std::vector<int> temp_log(dice1.roll_log.size(), 0);
 	Dice dice_temp(dice1.getDiceAmount() + dice2.getDiceAmount());
