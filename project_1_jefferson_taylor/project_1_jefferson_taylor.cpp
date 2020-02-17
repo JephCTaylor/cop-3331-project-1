@@ -8,6 +8,9 @@
 int main()
 {
 	int user_seed, rolls;
+	Dice dice1, dice2;
+	Histogram histo1, histo2, histo3;
+	GameStats stats;
 
 	std::cout << "Enter a seed value for the dice rolls: " << std::endl;
 	std::cin >> user_seed;
@@ -15,10 +18,6 @@ int main()
 	std::cin >> rolls;
 	srand(user_seed);
 	std::cout << std::endl;
-
-	Dice dice1, dice2;
-	Histogram histo1, histo2, histo3;
-	GameStats stats;
 
 	std::cout << "Roll stats from first die:" << std::endl;
 	stats.displayDiceStats(1, rolls, dice1, histo1);

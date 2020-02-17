@@ -3,7 +3,7 @@
 
 Dice::Dice() {}
 
-// custom constructor thats initialized with specified dice count
+//custom constructor thats initialized with specified dice count
 Dice::Dice(int dice_amount)
 	: dice_amount(dice_amount)
 {
@@ -14,20 +14,20 @@ int Dice::getDiceAmount() {
 	return dice_amount;
 }
 
-// changes amount of dice to given argument value and changes roll range
+//changes amount of dice to given argument value and changes roll range
 void Dice::setDiceAmount(int dice_amount) {
 	this->dice_amount = dice_amount;
 	setRollRange();
 }
 
-// sets the maximum and minimum combined roll that the specified amount of dice can be
+//sets the maximum and minimum combined roll that the specified amount of dice can be
 void Dice::setRollRange() {
 	lowest_roll = dice_amount;
 	highest_roll = dice_amount * 6;
 }
 
-// returns a roll value for the given amount of dice, and stores the value
-// in the roll_log of the dice object
+//returns a roll value for the given amount of dice, and stores the value
+//in the roll_log of the dice object
 int Dice::Roll() {
 	int roll_total = 0;
 	for (int i = 0; i < dice_amount; i++) {
@@ -45,7 +45,7 @@ int Dice::getHighestRoll() {
 	return highest_roll;
 }
 
-// example of how to return a vector by value 
+//example of how to return a vector by value 
 //std::vector<int> Dice::getRollLog() {
 //    std::vector<int> result = roll_log;
 //    return result;
