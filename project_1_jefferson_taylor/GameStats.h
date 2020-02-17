@@ -11,7 +11,8 @@ class GameStats {
   void CombineDiceRolls(Dice &dice1, Dice &dice2, Histogram &histo);
 
  private:
-  void AddRollsToHisto(Dice &dice, Histogram &histo);
+  void AddRollsToHisto(Dice &dice, Histogram &histo, int low_roll,
+                       int high_roll);
 };
 
 #endif

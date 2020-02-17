@@ -10,8 +10,15 @@ Dice::Dice(int dice_amount) : dice_amount_(dice_amount) { SetRollRange(); }
 int Dice::GetDiceAmount() { return dice_amount_; }
 
 // changes amount of dice to given argument value and changes roll range
-void Dice::SetDiceAmount(int dice_amount_) {
-  this->dice_amount_ = dice_amount_;
+void Dice::SetDiceAmount(int dice_amount) {
+  dice_amount_ = dice_amount;
+  SetRollRange();
+}
+
+int Dice::GetDiceSides() { return dice_sides_; }
+
+void Dice::SetDiceSides(int dice_sides) {
+  dice_sides_ = dice_sides;
   SetRollRange();
 }
 

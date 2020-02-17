@@ -12,6 +12,9 @@ class Dice {
   int Roll();
   int GetLowestRoll();
   int GetHighestRoll();
+  void SetDiceSides(int dice_sides);
+  int GetDiceSides();
+
   std::vector<int> roll_log_;
 
  private:
