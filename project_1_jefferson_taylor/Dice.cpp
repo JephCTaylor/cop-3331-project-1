@@ -27,7 +27,7 @@ void Dice::SetRollRange() {
 int Dice::Roll() {
   int roll_total = 0;
   for (int i = 0; i < dice_amount_; i++) {
-    roll_total += rand() % highest_roll_ + 1;
+    roll_total += rand() % 6 + 1;
   }
   roll_log_.push_back(roll_total);
   return roll_total;
