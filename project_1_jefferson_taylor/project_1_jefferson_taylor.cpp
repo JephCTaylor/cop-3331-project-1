@@ -16,11 +16,14 @@ int main()
 	srand(user_seed);
 	std::cout << std::endl;
 
-	Dice dice;
-	Histogram histo;
+	Dice dice1, dice2;
+	Histogram histo1, histo2, histo3;
 	GameStats stats;
 
-	stats.displayDiceStats(1, rolls, dice, histo);
-	stats.displayDiceStats(2, rolls, dice, histo);
-	stats.displayDiceStats(3, rolls, dice, histo);
+	std::cout << "Roll stats from first die:" << std::endl;
+	stats.displayDiceStats(1, rolls, dice1, histo1);
+	std::cout << "Roll stats from second die:" << std::endl;
+	stats.displayDiceStats(1, rolls, dice2, histo2);
+	std::cout << "Roll stats from first and second die combined:" << std::endl;
+	stats.combineDiceRolls(dice1, dice2, histo3);
 }
