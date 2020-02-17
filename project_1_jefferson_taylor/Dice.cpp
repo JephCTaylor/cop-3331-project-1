@@ -19,7 +19,7 @@ void Dice::SetDiceAmount(int dice_amount_) {
 // can be
 void Dice::SetRollRange() {
   lowest_roll_ = dice_amount_;
-  highest_roll_ = dice_amount_ * 6;
+  highest_roll_ = dice_amount_ * dice_sides_;
 }
 
 // returns a roll value for the given amount of dice, and stores the value
@@ -27,7 +27,7 @@ void Dice::SetRollRange() {
 int Dice::Roll() {
   int roll_total = 0;
   for (int i = 0; i < dice_amount_; i++) {
-    roll_total += rand() % 6 + 1;
+    roll_total += rand() % dice_sides_ + 1;
   }
   roll_log_.push_back(roll_total);
   return roll_total;

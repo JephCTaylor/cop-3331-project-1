@@ -16,6 +16,7 @@ class Dice {
 
  private:
   int dice_amount_{1};
+  int dice_sides_{6};
   int lowest_roll_{1};
   int highest_roll_{6};
 
