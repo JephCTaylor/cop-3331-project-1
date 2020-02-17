@@ -22,8 +22,7 @@ int main() {
   std::cout << "Roll stats from first die:" << std::endl;
   stats.DisplayDiceStats(1, rolls, dice1, histo1);
   std::cout << "Roll stats from second die:" << std::endl;
-  dice2.SetDiceSides(20);
   stats.DisplayDiceStats(1, rolls, dice2, histo2);
   std::cout << "Roll stats from first and second die Combined:" << std::endl;
-  stats.CombineDiceRolls(dice1, dice2, histo3);
+  stats.CombineDiceRolls(dice2, dice1, histo3);
 }
