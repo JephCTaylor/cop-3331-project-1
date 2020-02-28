@@ -10,7 +10,7 @@
 int main() {
   int user_seed, rolls;
   Dice dice1, dice2;
-  Histogram histo_d1, histo_d2, histo_combined;
+  Histogram histo;
   GameStats stats;
   Dealer dealer;
 
@@ -23,13 +23,13 @@ int main() {
 
   dealer.AddDie(&dice1);
   std::cout << "Roll stats from first die:" << std::endl;
-  stats.DisplayRollStats(rolls, dealer, histo_d1);
+  stats.DisplayRollStats(rolls, dealer, histo);
 
   dealer.ClearDice();
   dealer.AddDie(&dice2);
   std::cout << "Roll stats from second die:" << std::endl;
-  stats.DisplayRollStats(rolls, dealer, histo_d2);
+  stats.DisplayRollStats(rolls, dealer, histo);
 
   std::cout << "Roll stats from first and second die Combined:" << std::endl;
-  stats.CombineDiceRolls(dice2, dice1, histo_combined);
+  stats.CombineDiceRolls(dice2, dice1, histo);
 }

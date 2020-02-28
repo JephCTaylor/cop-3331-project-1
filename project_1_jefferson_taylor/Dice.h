@@ -11,6 +11,7 @@ class Dice {
   int GetDiceAmount();
   void SetDiceAmount(int dice_amount_);
   int Roll();
+  operator int();
   int GetLowestRoll();
   int GetHighestRoll();
   void SetDiceSides(int dice_sides);

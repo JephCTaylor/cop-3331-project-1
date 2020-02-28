@@ -49,6 +49,8 @@ int Dice::Roll() {
   return roll_total;
 }
 
+Dice::operator int() { return Roll(); }
+
 int Dice::GetLowestRoll() { return lowest_roll_; }
 
 int Dice::GetHighestRoll() { return highest_roll_; }
