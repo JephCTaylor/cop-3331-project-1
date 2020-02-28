@@ -2,10 +2,19 @@
 
 #include <stdlib.h>
 
-Dice::Dice() {}
+// default constructor with some logic
+Dice::Dice() { SetRollRange(); }
 
-// custom constructor thats initialized with specified dice count
-Dice::Dice(int dice_amount) : dice_amount_(dice_amount) { SetRollRange(); }
+// delegating construction isn't working, dont really wanna figure out why right
+// now
+// Dice::Dice(int dice_amount) : Dice(dice_amount, dice_sides_) {
+// SetRollRange(); }
+//
+//// sets the roll range for the dice when initialized
+// Dice::Dice(int dice_amount, int dice_sides)
+//    : dice_amount_(dice_amount), dice_sides_(dice_sides) {
+//  SetRollRange();
+//}
 
 int Dice::GetDiceAmount() { return dice_amount_; }
 

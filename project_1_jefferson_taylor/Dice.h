@@ -6,7 +6,8 @@
 class Dice {
  public:
   Dice();
-  Dice(int dice_amount_);
+  // Dice(int dice_amount_);
+  // Dice(int dice_amount, int dice_sides);
   int GetDiceAmount();
   void SetDiceAmount(int dice_amount_);
   int Roll();
