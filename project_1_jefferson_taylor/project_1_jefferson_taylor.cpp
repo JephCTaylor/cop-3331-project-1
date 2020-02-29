@@ -24,12 +24,14 @@ int main() {
   dealer.AddDie(&dice1);
   std::cout << "Roll stats from first die:" << std::endl;
   stats.DisplayRollStats(rolls, dealer, histo);
-
   dealer.ClearDice();
   dealer.ClearRollLog();
+
   dealer.AddDie(&dice2);
   std::cout << "Roll stats from second die:" << std::endl;
   stats.DisplayRollStats(rolls, dealer, histo);
+  dealer.ClearDice();
+  dealer.ClearRollLog();
 
   std::cout << "Roll stats from first and second die summed:" << std::endl;
   stats.SumDiceRolls(dice2, dice1, histo);

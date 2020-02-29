@@ -13,6 +13,7 @@ void Dealer::ClearDice() { dice_.clear(); }
 int Dealer::RollDice() {
   int total = 0;
   for (Dice* dice : dice_) {
+    // using the conversion operator, with a twist
     total += *(dice);
   }
   roll_log_.push_back(total);
