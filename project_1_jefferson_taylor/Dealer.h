@@ -3,18 +3,18 @@
 
 #include <vector>
 
-#include "Dice.h"
+#include "aDie.h"
 
 class Dealer {
  public:
-  void AddDie(Dice* dice);
-  void ClearRollLog();
+  void AddDie(aDie* aDie);
+  void ClearLogs();
   void ClearDice();
   int RollDice();
   int GetHighestRoll();
   int GetLowestRoll();
 
-  std::vector<Dice*> dice_;
+  std::vector<aDie*> dice_;
   std::vector<int> roll_log_;
 };
 

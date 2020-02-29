@@ -3,9 +3,9 @@
 
 #include <vector>
 
-class Dice {
+class aDie {
  public:
-  Dice();
+  aDie();
   int Roll();
   operator int();
   void SetDiceAmount(int dice_amount_);

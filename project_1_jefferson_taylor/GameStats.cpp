@@ -5,7 +5,7 @@
 #include <algorithm>
 #include <iostream>
 
-// dice is rolled specified amount of times and values are Added to the
+// aDie is rolled specified amount of times and values are Added to the
 // histogram, the histogram will then Display the counts of all values and the
 // graph
 void GameStats::DisplayRollStats(int rolls, Dealer &dealer, Histogram &histo) {
@@ -16,8 +16,8 @@ void GameStats::DisplayRollStats(int rolls, Dealer &dealer, Histogram &histo) {
                dealer.GetHighestRoll());
 }
 
-// the rolls logs from dice arguments are summed and displayed by the histo
-void GameStats::SumDiceRolls(Dice &dice1, Dice &dice2, Histogram &histo) {
+// the rolls logs from aDie arguments are summed and displayed by the histo
+void GameStats::SumDiceRolls(aDie &dice1, aDie &dice2, Histogram &histo) {
   Dealer deal_temp;
   SetupTempDealer(dice1, dice2, deal_temp);
 
@@ -29,8 +29,8 @@ void GameStats::SumDiceRolls(Dice &dice1, Dice &dice2, Histogram &histo) {
                deal_temp.GetHighestRoll());
 }
 
-// the rolls logs from dice arguments are multiplied and displayed by the histo
-void GameStats::MultiplyDiceRolls(Dice &dice1, Dice &dice2, Histogram &histo) {
+// the rolls logs from aDie arguments are multiplied and displayed by the histo
+void GameStats::MultiplyDiceRolls(aDie &dice1, aDie &dice2, Histogram &histo) {
   Dealer deal_temp;
   SetupTempDealer(dice1, dice2, deal_temp);
 
@@ -43,16 +43,16 @@ void GameStats::MultiplyDiceRolls(Dice &dice1, Dice &dice2, Histogram &histo) {
   DisplayStats(histo, deal_temp.roll_log_, low, high);
 }
 
-// organizes dice size, resizes dealer roll log, and adds dice to dealer
-void GameStats::SetupTempDealer(Dice &dice1, Dice &dice2, Dealer &dealer) {
+// organizes aDie size, resizes dealer roll log, and adds aDie to dealer
+void GameStats::SetupTempDealer(aDie &dice1, aDie &dice2, Dealer &dealer) {
   SwitchLargestDie(dice1, dice2);
   dealer.roll_log_.resize(dice1.roll_log_.size(), 0);
   dealer.AddDie(&dice1);
   dealer.AddDie(&dice2);
 }
 
-// dice with largest value range becomes dice1
-void GameStats::SwitchLargestDie(Dice &dice1, Dice &dice2) {
+// aDie with largest value range becomes dice1
+void GameStats::SwitchLargestDie(aDie &dice1, aDie &dice2) {
   if (dice1.roll_log_.size() < dice2.roll_log_.size()) {
     std::swap(dice1, dice2);
   }
