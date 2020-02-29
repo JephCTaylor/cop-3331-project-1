@@ -1,5 +1,5 @@
-#ifndef DICE_H
-#define DICE_H
+#ifndef ADIE_H
+#define ADIE_H
 
 #include <vector>
 
