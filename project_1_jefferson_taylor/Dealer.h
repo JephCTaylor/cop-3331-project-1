@@ -8,7 +8,6 @@
 class Dealer {
  public:
   void AddDie(Dice* dice);
-  void ClearDealer();
   void ClearRollLog();
   void ClearDice();
   int RollDice();

@@ -25,18 +25,18 @@ void GameStats::CombineDiceRolls(Dice &dice1, Dice &dice2, Histogram &histo) {
     // dice with largest range becomes dice1
     std::swap(dice1, dice2);
   }
-  std::vector<int> temp_log(dice1.roll_log_.size(), 0);
   Dealer deal_temp;
+  deal_temp.roll_log_.resize(dice1.roll_log_.size(), 0);
   deal_temp.AddDie(&dice1);
   deal_temp.AddDie(&dice2);
 
   // iteratates from beginning to end of both dice roll logs and puts the
   // Combined values into the deal_temp.roll_log_ vector
   std::transform(dice1.roll_log_.begin(), dice1.roll_log_.end(),
-                 dice2.roll_log_.begin(), temp_log.begin(), std::plus<int>());
+                 dice2.roll_log_.begin(), deal_temp.roll_log_.begin(), std::plus<int>());
 
   histo.SetHistoRange(deal_temp.GetLowestRoll(), deal_temp.GetHighestRoll());
-  for (int x : temp_log) {
+  for (int x : deal_temp.roll_log_) {
     histo.AddValue(x);
   }
   histo.DisplayValueHisto();

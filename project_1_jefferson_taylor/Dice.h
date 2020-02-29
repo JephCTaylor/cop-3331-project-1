@@ -6,16 +6,15 @@
 class Dice {
  public:
   Dice();
-  // Dice(int dice_amount_);
-  // Dice(int dice_amount, int dice_sides);
-  int GetDiceAmount();
-  void SetDiceAmount(int dice_amount_);
   int Roll();
   operator int();
-  int GetLowestRoll();
-  int GetHighestRoll();
+  void SetDiceAmount(int dice_amount_);
   void SetDiceSides(int dice_sides);
-  int GetDiceSides();
+
+  int GetDiceAmount() const;
+  int GetDiceSides() const;
+  int GetLowestRoll() const;
+  int GetHighestRoll() const;
 
   std::vector<int> roll_log_;
 

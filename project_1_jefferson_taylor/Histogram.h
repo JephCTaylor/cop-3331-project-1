@@ -9,7 +9,7 @@ class Histogram {
   Histogram();
   void DisplayValueHisto();
   void AddValue(int value);
-  void SetHistoRange(int start_, int stop_);
+  void SetHistoRange(int start, int stop);
 
  private:
   int start_{0};
