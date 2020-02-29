@@ -31,7 +31,9 @@ int main() {
   std::cout << "Roll stats from second die:" << std::endl;
   stats.DisplayRollStats(rolls, dealer, histo);
 
-  std::cout << "Roll stats from first and second die Combined:" << std::endl;
+  std::cout << "Roll stats from first and second die summed:" << std::endl;
   stats.SumDiceRolls(dice2, dice1, histo);
+
+  std::cout << "Roll stats from first and second die multipled:" << std::endl;
   stats.MultiplyDiceRolls(dice1, dice2, histo);
 }
