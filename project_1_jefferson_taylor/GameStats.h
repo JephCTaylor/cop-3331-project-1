@@ -8,7 +8,11 @@
 class GameStats {
  public:
   void DisplayRollStats(int rolls, Dealer &dealer, Histogram &histo);
-  void CombineDiceRolls(Dice &dice1, Dice &dice2, Histogram &histo);
+  void SumDiceRolls(Dice &dice1, Dice &dice2, Histogram &histo);
+  void MultiplyDiceRolls(Dice &dice1, Dice &dice2, Histogram &histo);
+  void SwitchLargestDie(Dice &d1, Dice &d2);
+  void DisplayStats(Histogram &histo, std::vector<int> list, int lower,
+                        int upper);
 };
 
 #endif

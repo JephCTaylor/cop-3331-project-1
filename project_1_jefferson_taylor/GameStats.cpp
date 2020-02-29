@@ -9,34 +9,62 @@
 // histogram, the histogram will then Display the counts of all values and the
 // graph
 void GameStats::DisplayRollStats(int rolls, Dealer &dealer, Histogram &histo) {
-  histo.SetHistoRange(dealer.GetLowestRoll(), dealer.GetHighestRoll());
   for (int i = 0; i < rolls; i++) {
-    histo.AddValue(dealer.RollDice());
+    dealer.RollDice();
   }
-  histo.DisplayValueHisto();
+  DisplayStats(histo, dealer.roll_log_, dealer.GetLowestRoll(),
+               dealer.GetHighestRoll());
 }
 
-// Combines dice rolls sequentially, as if the dice were rolled with the values
-// totaled toGether. It's then Added to a histogram class so the data can be
-// Displayed The dice must have been rolled the same amount of times for this
-// function to work might want to Add a try catch later
-void GameStats::CombineDiceRolls(Dice &dice1, Dice &dice2, Histogram &histo) {
-  if (dice1.roll_log_.size() < dice2.roll_log_.size()) {
-    // dice with largest range becomes dice1
-    std::swap(dice1, dice2);
-  }
+// the rolls logs from dice arguments are summed and displayed by the histo
+void GameStats::SumDiceRolls(Dice &dice1, Dice &dice2, Histogram &histo) {
   Dealer deal_temp;
+
+  SwitchLargestDie(dice1, dice2);
+  deal_temp.roll_log_.resize(dice1.roll_log_.size(), 0);
+  std::cout << "this is the size of the roll log: "
+            << deal_temp.roll_log_.size() << std::endl;
+  deal_temp.AddDie(&dice1);
+  deal_temp.AddDie(&dice2);
+
+  std::transform(dice1.roll_log_.begin(), dice1.roll_log_.end(),
+                 dice2.roll_log_.begin(), deal_temp.roll_log_.begin(),
+                 std::plus<int>());
+
+  DisplayStats(histo, deal_temp.roll_log_, deal_temp.GetLowestRoll(),
+               deal_temp.GetHighestRoll());
+}
+
+// the rolls logs from dice arguments are multiplied and displayed by the histo
+void GameStats::MultiplyDiceRolls(Dice &dice1, Dice &dice2, Histogram &histo) {
+  Dealer deal_temp;
+
+  SwitchLargestDie(dice1, dice2);
   deal_temp.roll_log_.resize(dice1.roll_log_.size(), 0);
   deal_temp.AddDie(&dice1);
   deal_temp.AddDie(&dice2);
 
-  // iteratates from beginning to end of both dice roll logs and puts the
-  // Combined values into the deal_temp.roll_log_ vector
   std::transform(dice1.roll_log_.begin(), dice1.roll_log_.end(),
-                 dice2.roll_log_.begin(), deal_temp.roll_log_.begin(), std::plus<int>());
+                 dice2.roll_log_.begin(), deal_temp.roll_log_.begin(),
+                 std::multiplies<int>());
 
-  histo.SetHistoRange(deal_temp.GetLowestRoll(), deal_temp.GetHighestRoll());
-  for (int x : deal_temp.roll_log_) {
+  DisplayStats(histo, deal_temp.roll_log_, deal_temp.GetLowestRoll(),
+               deal_temp.GetHighestRoll());
+}
+
+// dice with largest value range becomes dice1
+void GameStats::SwitchLargestDie(Dice &dice1, Dice &dice2) {
+  if (dice1.roll_log_.size() < dice2.roll_log_.size()) {
+    std::swap(dice1, dice2);
+  }
+}
+
+// Takes the values from a vector and adds them to the histo object,
+// then displays the histogram and frequency
+void GameStats::DisplayStats(Histogram &histo, std::vector<int> list, int lower,
+                             int upper) {
+  histo.SetHistoRange(lower, upper);
+  for (int x : list) {
     histo.AddValue(x);
   }
   histo.DisplayValueHisto();
