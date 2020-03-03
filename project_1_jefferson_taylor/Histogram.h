@@ -8,9 +8,8 @@ enum class Mode { Dice, Coin };
 
 class Histogram {
  public:
-  Histogram();
   void DisplayStats(Mode mode, std::vector<int> list, int lower, int upper);
-  void PrintStats(Mode mode);
+  void DisplayDataGroup(Mode mode, int loop);
   void AddValue(int value);
   void SetHistoRange(int start, int stop);
 
@@ -20,8 +19,8 @@ class Histogram {
   std::vector<int> histogram_count_;
   std::vector<int> value_list_;
 
-  void DisplayFreq(void (Histogram::*PrintDataGroup)(int));
-  void DisplayHisto(void (Histogram::*PrintDataGroup)(int));
+  void DisplayFreq(Mode mode);
+  void DisplayHisto(Mode mode);
   void PrintHeadsTails(int i);
   void PrintDiceSide(int i);
   double ScaleHistoValue(int value);

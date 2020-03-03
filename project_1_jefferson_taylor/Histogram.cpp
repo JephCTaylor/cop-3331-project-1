@@ -15,26 +15,8 @@ void Histogram::DisplayStats(Mode mode, std::vector<int> list, int lower,
   for (int x : list) {
     AddValue(x);
   }
-  PrintStats(mode);
-}
-
-// prints out different data depending on the game mode argument
-void Histogram::PrintStats(Mode mode) {
-  switch (mode) {
-    case Mode::Dice: {
-      DisplayFreq(PrintDiceSide);
-      DisplayHisto(PrintDiceSide);
-      break;
-    }
-    case Mode::Coin: {
-      DisplayFreq(PrintHeadsTails);
-      DisplayHisto(PrintHeadsTails);
-      break;
-    }
-    default:
-      std::cerr << "No mode was selected for Histogram::PrintStats()";
-      break;
-  }
+  DisplayFreq(mode);
+  DisplayHisto(mode);
 }
 
 // prints out the counts of all values stored in the histogram
@@ -42,9 +24,9 @@ void Histogram::PrintStats(Mode mode) {
 // 1: 2
 // 2: 3
 // 3: 1
-void Histogram::DisplayFreq(void (Histogram::*PrintDataGroup)(int)) {
+void Histogram::DisplayFreq(Mode mode) {
   for (int i = 0; i < (stop_ - start_ + 1); i++) {
-    PrintDataGroup;
+    DisplayDataGroup(mode, i);
     std::cout << ":\t" << histogram_count_[i] << std::endl;
   }
   std::cout << std::endl;
@@ -55,9 +37,9 @@ void Histogram::DisplayFreq(void (Histogram::*PrintDataGroup)(int)) {
 // 1: XX
 // 2: XXX
 // 3: X
-void Histogram::DisplayHisto(void (Histogram::*PrintDataGroup)(int)) {
+void Histogram::DisplayHisto(Mode mode) {
   for (int i = 0; i < (stop_ - start_ + 1); i++) {
-    PrintDataGroup;
+    DisplayDataGroup(mode, i);
     for (int j = 0;
          j < (ScaleHistoValue(histogram_count_[i] * HISTO_BAR_SCALE)); j++) {
       std::cout << "X";
@@ -65,6 +47,23 @@ void Histogram::DisplayHisto(void (Histogram::*PrintDataGroup)(int)) {
     std::cout << std::endl;
   }
   std::cout << std::endl;
+}
+
+// prints out different data depending on the game mode argument
+void Histogram::DisplayDataGroup(Mode mode, int loop) {
+  switch (mode) {
+    case Mode::Dice: {
+      PrintDiceSide(loop);
+      break;
+    }
+    case Mode::Coin: {
+      PrintHeadsTails(loop);
+      break;
+    }
+    default:
+      std::cerr << "No mode was selected for Histogram::PrintStats()";
+      break;
+  }
 }
 
 void Histogram::PrintDiceSide(int i) { std::cout << (i + start_) << ":\t"; }
