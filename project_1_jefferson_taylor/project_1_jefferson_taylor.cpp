@@ -13,7 +13,6 @@ int main() {
   aCoin coin;
   Histogram histo;
   GameStats stats;
-  Dealer dealer;
 
   std::cout << "Enter a seed value for the aDie rolls:" << std::endl;
   std::cin >> user_seed;
@@ -22,17 +21,11 @@ int main() {
   srand(user_seed);
   std::cout << std::endl;
 
-  dealer.AddDie(&dice1);
   std::cout << "Roll stats from first die:" << std::endl;
-  stats.DisplayRollStats(plays, dealer, histo);
-  dealer.ClearDice();
-  dealer.ClearLogs();
+  stats.DisplayRollStats(plays, dice1, histo);
 
-  dealer.AddDie(&dice2);
   std::cout << "Roll stats from second die:" << std::endl;
-  stats.DisplayRollStats(plays, dealer, histo);
-  dealer.ClearDice();
-  dealer.ClearLogs();
+  stats.DisplayRollStats(plays, dice2, histo);
 
   std::cout << "Roll stats from first and second die summed:" << std::endl;
   stats.SumDiceRolls(dice2, dice1, histo);
@@ -41,5 +34,5 @@ int main() {
   stats.MultiplyDiceRolls(dice1, dice2, histo);
 
   std::cout << "Coin toss stats displaying heads and tails:" << std::endl;
-  stats.DisplayTossStats(plays, dealer, histo);
+  stats.DisplayTossStats(plays, coin, histo);
 }
