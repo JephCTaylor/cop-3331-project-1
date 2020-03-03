@@ -12,8 +12,15 @@ void GameStats::DisplayRollStats(int rolls, Dealer &dealer, Histogram &histo) {
   for (int i = 0; i < rolls; i++) {
     dealer.RollDice();
   }
-  DisplayStats(histo, dealer.roll_log_, dealer.GetLowestRoll(),
-               dealer.GetHighestRoll());
+  histo.DisplayStats(Mode::Dice, dealer.roll_log_, dealer.GetLowestRoll(),
+                     dealer.GetHighestRoll());
+}
+
+void GameStats::DisplayTossStats(int plays, Dealer &dealer, Histogram &histo) {
+  for (int i = 0; i < plays; i++) {
+    dealer.TossCoin();
+  }
+  histo.DisplayStats(Mode::Coin, dealer.coin_.toss_log_, Heads, Tails);
 }
 
 // the rolls logs from aDie arguments are summed and displayed by the histo
@@ -25,8 +32,8 @@ void GameStats::SumDiceRolls(aDie &dice1, aDie &dice2, Histogram &histo) {
                  dice2.roll_log_.begin(), deal_temp.roll_log_.begin(),
                  std::plus<int>());
 
-  DisplayStats(histo, deal_temp.roll_log_, deal_temp.GetLowestRoll(),
-               deal_temp.GetHighestRoll());
+  histo.DisplayStats(Mode::Dice, deal_temp.roll_log_, deal_temp.GetLowestRoll(),
+                     deal_temp.GetHighestRoll());
 }
 
 // the rolls logs from aDie arguments are multiplied and displayed by the histo
@@ -40,7 +47,7 @@ void GameStats::MultiplyDiceRolls(aDie &dice1, aDie &dice2, Histogram &histo) {
 
   int low = dice1.GetLowestRoll() * dice2.GetLowestRoll();
   int high = dice1.GetHighestRoll() * dice2.GetHighestRoll();
-  DisplayStats(histo, deal_temp.roll_log_, low, high);
+  histo.DisplayStats(Mode::Dice, deal_temp.roll_log_, low, high);
 }
 
 // organizes aDie size, resizes dealer roll log, and adds aDie to dealer
@@ -56,15 +63,4 @@ void GameStats::SwitchLargestDie(aDie &dice1, aDie &dice2) {
   if (dice1.roll_log_.size() < dice2.roll_log_.size()) {
     std::swap(dice1, dice2);
   }
-}
-
-// Takes the values from a vector and adds them to the histo object,
-// then displays the histogram and frequency
-void GameStats::DisplayStats(Histogram &histo, std::vector<int> list, int lower,
-                             int upper) {
-  histo.SetHistoRange(lower, upper);
-  for (int x : list) {
-    histo.AddValue(x);
-  }
-  histo.DisplayValueHisto();
 }

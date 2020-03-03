@@ -4,10 +4,14 @@
 
 #include <vector>
 
+enum class Mode { Dice, Coin };
+
 class Histogram {
  public:
   Histogram();
-  void DisplayValueHisto();
+  void DisplayStats(Mode mode, std::vector<int> list, int lower,
+                             int upper);
+  void PrintStats(Mode mode);
   void AddValue(int value);
   void SetHistoRange(int start, int stop);
 
@@ -17,8 +21,10 @@ class Histogram {
   std::vector<int> histogram_count_;
   std::vector<int> value_list_;
 
-  void DisplayValueCounts();
-  void DisplayHisto();
+  void DisplayRollFreq();
+  void DisplayRollHisto();
+  void DisplayTossFreq();
+  void DisplayTossHisto();
   double ScaleHistoValue(int value);
   void ResizeHistoVector();
 };

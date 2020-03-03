@@ -6,12 +6,37 @@
 #include <iostream>
 #include <numeric>
 
+#include "aCoin.h"
+
 Histogram::Histogram() {}
 
 // prints the values counts and histogram
-void Histogram::DisplayValueHisto() {
-  DisplayValueCounts();
-  DisplayHisto();
+void Histogram::DisplayStats(Mode mode, std::vector<int> list, int lower,
+                             int upper) {
+  SetHistoRange(lower, upper);
+  for (int x : list) {
+    AddValue(x);
+  }
+  PrintStats(mode);
+}
+
+// prints out different data depending on the game mode argument
+void Histogram::PrintStats(Mode mode) {
+  switch (mode) {
+    case Mode::Dice: {
+      DisplayRollFreq();
+      DisplayRollHisto();
+      break;
+    }
+    case Mode::Coin: {
+      DisplayTossFreq();
+      DisplayTossHisto();
+      break;
+    }
+    default:
+      std::cerr << "No mode was selected for Histogram::PrintStats()";
+      break;
+  }
 }
 
 // prints out the counts of all values stored in the histogram
@@ -19,9 +44,24 @@ void Histogram::DisplayValueHisto() {
 // 1: 2
 // 2: 3
 // 3: 1
-void Histogram::DisplayValueCounts() {
+void Histogram::DisplayRollFreq() {
   for (int i = 0; i < (stop_ - start_ + 1); i++) {
     std::cout << (i + start_) << ":\t" << histogram_count_[i] << std::endl;
+  }
+  std::cout << std::endl;
+}
+
+// display freq for coin toss
+void Histogram::DisplayTossFreq() {
+  for (int i = 0; i < COIN_SIDES; i++) {
+    switch (i) {
+      case Heads:
+        std::cout << "Heads:\t" << histogram_count_[i] << std::endl;
+        break;
+      case Tails:
+        std::cout << "Tails:\t" << histogram_count_[i] << std::endl;
+        break;
+    }
   }
   std::cout << std::endl;
 }
@@ -31,9 +71,29 @@ void Histogram::DisplayValueCounts() {
 // 1: XX
 // 2: XXX
 // 3: X
-void Histogram::DisplayHisto() {
+void Histogram::DisplayRollHisto() {
   for (int i = 0; i < (stop_ - start_ + 1); i++) {
     std::cout << (i + start_) << ":\t";
+    for (int j = 0;
+         j < (ScaleHistoValue(histogram_count_[i] * HISTO_BAR_SCALE)); j++) {
+      std::cout << "X";
+    }
+    std::cout << std::endl;
+  }
+  std::cout << std::endl;
+}
+
+// display histo made for coin toss
+void Histogram::DisplayTossHisto() {
+  for (int i = 0; i < COIN_SIDES; i++) {
+    switch (i) {
+      case Heads:
+        std::cout << "Heads:\t";
+        break;
+      case Tails:
+        std::cout << "Tails:\t";
+        break;
+    }
     for (int j = 0;
          j < (ScaleHistoValue(histogram_count_[i] * HISTO_BAR_SCALE)); j++) {
       std::cout << "X";
