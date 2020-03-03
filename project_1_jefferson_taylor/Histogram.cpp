@@ -22,15 +22,16 @@ void Histogram::DisplayStats(Mode mode, std::vector<int> list, int lower,
 
 // prints out different data depending on the game mode argument
 void Histogram::PrintStats(Mode mode) {
+
   switch (mode) {
     case Mode::Dice: {
-      DisplayRollFreq();
-      DisplayRollHisto();
+      DisplayFreq(PrintDiceSide);
+      DisplayHisto(PrintDiceSide);
       break;
     }
     case Mode::Coin: {
-      DisplayTossFreq();
-      DisplayTossHisto();
+      DisplayFreq(PrintHeadsTails);
+      DisplayHisto(PrintHeadsTails);
       break;
     }
     default:
@@ -44,18 +45,10 @@ void Histogram::PrintStats(Mode mode) {
 // 1: 2
 // 2: 3
 // 3: 1
-void Histogram::DisplayRollFreq() {
+void Histogram::DisplayFreq(void (Histogram::*PrintDataGroup)(int)) {
   for (int i = 0; i < (stop_ - start_ + 1); i++) {
-    std::cout << (i + start_) << ":\t" << histogram_count_[i] << std::endl;
-  }
-  std::cout << std::endl;
-}
-
-// display freq for coin toss
-void Histogram::DisplayTossFreq() {
-  for (int i = 0; i < COIN_SIDES; i++) {
-    PrintHeadsTails(i);
-    std::cout << histogram_count_[i] << std::endl;
+    PrintDataGroup;
+    std::cout << ":\t" << histogram_count_[i] << std::endl;
   }
   std::cout << std::endl;
 }
@@ -65,9 +58,9 @@ void Histogram::DisplayTossFreq() {
 // 1: XX
 // 2: XXX
 // 3: X
-void Histogram::DisplayRollHisto() {
+void Histogram::DisplayHisto(void (Histogram::*PrintDataGroup)(int)) {
   for (int i = 0; i < (stop_ - start_ + 1); i++) {
-    std::cout << (i + start_) << ":\t";
+    PrintDataGroup;
     for (int j = 0;
          j < (ScaleHistoValue(histogram_count_[i] * HISTO_BAR_SCALE)); j++) {
       std::cout << "X";
@@ -77,17 +70,8 @@ void Histogram::DisplayRollHisto() {
   std::cout << std::endl;
 }
 
-// display histo made for coin toss
-void Histogram::DisplayTossHisto() {
-  for (int i = 0; i < COIN_SIDES; i++) {
-    PrintHeadsTails(i);
-    for (int j = 0;
-         j < (ScaleHistoValue(histogram_count_[i] * HISTO_BAR_SCALE)); j++) {
-      std::cout << "X";
-    }
-    std::cout << std::endl;
-  }
-  std::cout << std::endl;
+void Histogram::PrintDiceSide(int i) {
+    std::cout << (i + start_) << ":\t";
 }
 
 void Histogram::PrintHeadsTails(int i) {

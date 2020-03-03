@@ -20,11 +20,10 @@ class Histogram {
   std::vector<int> histogram_count_;
   std::vector<int> value_list_;
 
-  void DisplayRollFreq();
-  void DisplayRollHisto();
-  void DisplayTossFreq();
-  void DisplayTossHisto();
+  void DisplayFreq(void (Histogram::*PrintDataGroup)(int));
+  void DisplayHisto(void (Histogram::*PrintDataGroup)(int));
   void PrintHeadsTails(int i);
+  void PrintDiceSide(int i);
   double ScaleHistoValue(int value);
   void ResizeHistoVector();
 };
