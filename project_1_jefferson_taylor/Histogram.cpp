@@ -54,14 +54,8 @@ void Histogram::DisplayRollFreq() {
 // display freq for coin toss
 void Histogram::DisplayTossFreq() {
   for (int i = 0; i < COIN_SIDES; i++) {
-    switch (i) {
-      case Heads:
-        std::cout << "Heads:\t" << histogram_count_[i] << std::endl;
-        break;
-      case Tails:
-        std::cout << "Tails:\t" << histogram_count_[i] << std::endl;
-        break;
-    }
+    PrintHeadsTails(i);
+    std::cout << histogram_count_[i] << std::endl;
   }
   std::cout << std::endl;
 }
@@ -86,14 +80,7 @@ void Histogram::DisplayRollHisto() {
 // display histo made for coin toss
 void Histogram::DisplayTossHisto() {
   for (int i = 0; i < COIN_SIDES; i++) {
-    switch (i) {
-      case Heads:
-        std::cout << "Heads:\t";
-        break;
-      case Tails:
-        std::cout << "Tails:\t";
-        break;
-    }
+    PrintHeadsTails(i);
     for (int j = 0;
          j < (ScaleHistoValue(histogram_count_[i] * HISTO_BAR_SCALE)); j++) {
       std::cout << "X";
@@ -101,6 +88,17 @@ void Histogram::DisplayTossHisto() {
     std::cout << std::endl;
   }
   std::cout << std::endl;
+}
+
+void Histogram::PrintHeadsTails(int i) {
+  switch (i) {
+    case Heads:
+      std::cout << "Heads:\t";
+      break;
+    case Tails:
+      std::cout << "Tails:\t";
+      break;
+  }
 }
 
 // Adds a single value to the histogram object vector, and all values
