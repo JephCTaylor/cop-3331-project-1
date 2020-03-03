@@ -8,8 +8,6 @@
 
 #include "aCoin.h"
 
-Histogram::Histogram() {}
-
 // prints the values counts and histogram
 void Histogram::DisplayStats(Mode mode, std::vector<int> list, int lower,
                              int upper) {
@@ -22,7 +20,6 @@ void Histogram::DisplayStats(Mode mode, std::vector<int> list, int lower,
 
 // prints out different data depending on the game mode argument
 void Histogram::PrintStats(Mode mode) {
-
   switch (mode) {
     case Mode::Dice: {
       DisplayFreq(PrintDiceSide);
@@ -70,9 +67,7 @@ void Histogram::DisplayHisto(void (Histogram::*PrintDataGroup)(int)) {
   std::cout << std::endl;
 }
 
-void Histogram::PrintDiceSide(int i) {
-    std::cout << (i + start_) << ":\t";
-}
+void Histogram::PrintDiceSide(int i) { std::cout << (i + start_) << ":\t"; }
 
 void Histogram::PrintHeadsTails(int i) {
   switch (i) {
