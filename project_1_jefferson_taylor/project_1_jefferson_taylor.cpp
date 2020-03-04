@@ -2,7 +2,6 @@
 
 #include <iostream>
 
-#include "Dealer.h"
 #include "GameStats.h"
 #include "Histogram.h"
 #include "aDie.h"

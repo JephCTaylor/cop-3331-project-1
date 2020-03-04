@@ -1,7 +1,6 @@
 #ifndef GAMESTATS_H
 #define GAMESTATS_H
 
-#include "Dealer.h"
 #include "Histogram.h"
 #include "aCoin.h"
 #include "aDie.h"

@@ -24,9 +24,6 @@
     <ClCompile Include="GameStats.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Dealer.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="aCoin.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -39,9 +36,6 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="GameStats.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Dealer.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="aCoin.h">

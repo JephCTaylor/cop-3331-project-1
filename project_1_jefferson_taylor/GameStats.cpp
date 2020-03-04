@@ -2,17 +2,16 @@
 
 #include <stdlib.h>
 
-#include <string>
-
 #include <algorithm>
 #include <iostream>
+#include <string>
 
 // aDie is rolled specified amount of times and values are Added to the
 // histogram, the histogram will then Display the counts of all values and the
 // graph
 void GameStats::DisplayRollStats(int rolls, aDie &dice, Histogram &histo) {
   for (int i = 0; i < rolls; i++) {
-    dice.Roll();
+    (int)dice;
   }
   histo.DisplayStats(Mode::Dice, dice.roll_log_, dice.GetLowestRoll(),
                      dice.GetHighestRoll());
@@ -20,7 +19,7 @@ void GameStats::DisplayRollStats(int rolls, aDie &dice, Histogram &histo) {
 
 void GameStats::DisplayTossStats(int plays, aCoin &coin, Histogram &histo) {
   for (int i = 0; i < plays; i++) {
-    coin.Toss();
+    (std::string) coin;
   }
   histo.DisplayStats(Mode::Coin, coin.toss_log_, Heads, Tails);
 }
@@ -32,8 +31,7 @@ void GameStats::SumDiceRolls(aDie &dice1, aDie &dice2, Histogram &histo) {
   temp_log.resize(dice1.roll_log_.size(), 0);
 
   std::transform(dice1.roll_log_.begin(), dice1.roll_log_.end(),
-                 dice2.roll_log_.begin(), temp_log.begin(),
-                 std::plus<int>());
+                 dice2.roll_log_.begin(), temp_log.begin(), std::plus<int>());
 
   int low = dice1.GetLowestRoll() + dice2.GetLowestRoll();
   int high = dice1.GetHighestRoll() + dice2.GetHighestRoll();

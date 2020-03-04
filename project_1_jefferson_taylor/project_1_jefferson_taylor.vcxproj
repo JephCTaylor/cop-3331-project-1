@@ -148,7 +148,6 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="aCoin.cpp" />
-    <ClCompile Include="Dealer.cpp" />
     <ClCompile Include="aDie.cpp" />
     <ClCompile Include="GameStats.cpp" />
     <ClCompile Include="Histogram.cpp" />
@@ -156,7 +155,6 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="aCoin.h" />
-    <ClInclude Include="Dealer.h" />
     <ClInclude Include="aDie.h" />
     <ClInclude Include="GameStats.h" />
     <ClInclude Include="Histogram.h" />
