@@ -4,6 +4,8 @@
 
 #include <iostream>
 
+// simulates the toss of a coin landing on either heads or tails
+// returns a string of H for heads or T for tails
 std::string aCoin::Toss() {
   switch (rand() % COIN_SIDES) {
     case Heads:

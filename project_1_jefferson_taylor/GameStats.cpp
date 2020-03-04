@@ -17,9 +17,11 @@ void GameStats::DisplayRollStats(int rolls, aDie &dice, Histogram &histo) {
                      dice.GetHighestRoll());
 }
 
+// simulates the flipping a coin a specified amount of times and prints the 
+// frequency of heads or tails as well as a histogram
 void GameStats::DisplayTossStats(int plays, aCoin &coin, Histogram &histo) {
   for (int i = 0; i < plays; i++) {
-    (std::string) coin;
+    (std::string)coin;
   }
   histo.DisplayStats(Mode::Coin, coin.toss_log_, Heads, Tails);
 }
