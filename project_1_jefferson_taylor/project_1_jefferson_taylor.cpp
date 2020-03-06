@@ -2,15 +2,16 @@
 
 #include <iostream>
 
-#include "Dealer.h"
 #include "GameStats.h"
 #include "Histogram.h"
+#include "aDeckOfCards.h"
 #include "aDie.h"
 
 int main() {
   int user_seed, plays;
   aDie dice1, dice2;
   aCoin coin;
+  aDeckOfCards deck;
   Histogram histo;
   GameStats stats;
 
@@ -35,4 +36,6 @@ int main() {
 
   std::cout << "Coin toss stats displaying heads and tails:" << std::endl;
   stats.DisplayTossStats(plays, coin, histo);
+
+  stats.DisplayPokerHands(deck, 4, 5);
 }
