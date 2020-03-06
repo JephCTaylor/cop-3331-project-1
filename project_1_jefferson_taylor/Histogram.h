@@ -8,7 +8,10 @@ enum class Mode { Dice, Coin };
 
 class Histogram {
  public:
-  void DisplayStats(Mode mode, std::vector<int> list, int lower, int upper);
+  void DisplayStats(const Mode mode, std::vector<int> list, const int lower,
+                    const int upper);
+  void AddValue(const int value);
+  void SetHistoRange(const int start, const int stop);
 
  private:
   int start_{0};
@@ -16,14 +19,12 @@ class Histogram {
   std::vector<int> histogram_count_;
   std::vector<int> value_list_;
 
-  void DisplayFreq(Mode mode);
-  void DisplayHisto(Mode mode);
-  void DisplayDataGroup(Mode mode, int loop);
-  void PrintHeadsTails(int i);
-  void PrintDiceSide(int i);
-  void AddValue(int value);
-  void SetHistoRange(int start, int stop);
-  double ScaleHistoValue(int value);
+  void DisplayFreq(const Mode mode) const;
+  void DisplayHisto(const Mode mode) const;
+  void DisplayDataGroup(const Mode mode, const int loop) const;
+  void PrintHeadsTails(const int i) const;
+  void PrintDiceSide(const int i) const;
+  double ScaleHistoValue(const int value) const;
   void ResizeHistoVector();
 };
 

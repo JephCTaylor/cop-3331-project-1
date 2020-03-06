@@ -34,6 +34,7 @@ struct Card {
   Brand brand;
   Suit suit;
 
+  // prints out "BRAND-SUIT " of the card
   void DisplayCard() const {
     std::cout << static_cast<char>(brand) << "-" << static_cast<char>(suit)
               << " ";
@@ -42,20 +43,21 @@ struct Card {
 
 class aDeckOfCards {
  public:
+  void ResetDeck();
   void DisplayHand() const;
   std::vector<Card> Draw(const int num_of_cards, const bool replacement);
   operator Card();
 
  private:
   Card DrawCard();
-  bool IsDuplicate(const Card &card) const;
+  bool IsDrawn(const Card &card);
 
-  std::vector<Card> hand;
+  std::vector<Card> drawn_;
+  std::vector<Card> hand_;
   std::array<Brand, kBrands> brands{Brand::Ace,   Brand::Two,   Brand::Three,
                                     Brand::Four,  Brand::Five,  Brand::Six,
                                     Brand::Seven, Brand::Eight, Brand::Nine,
                                     Brand::Jack,  Brand::Queen, Brand::King};
-
   std::array<Suit, kSuits> suits{Suit::Clubs, Suit::Diamonds, Suit::Hearts,
                                  Suit::Spades};
 };

@@ -8,9 +8,9 @@
 
 #include "aCoin.h"
 
-// prints the values counts and histogram
-void Histogram::DisplayStats(Mode mode, std::vector<int> list, int lower,
-                             int upper) {
+// prints the frequency counts and histogram
+void Histogram::DisplayStats(const Mode mode, std::vector<int> list,
+                             const int lower, const int upper) {
   SetHistoRange(lower, upper);
   for (int x : list) {
     AddValue(x);
@@ -24,7 +24,7 @@ void Histogram::DisplayStats(Mode mode, std::vector<int> list, int lower,
 // 1: 2
 // 2: 3
 // 3: 1
-void Histogram::DisplayFreq(Mode mode) {
+void Histogram::DisplayFreq(const Mode mode) const {
   for (int i = 0; i < (stop_ - start_ + 1); i++) {
     DisplayDataGroup(mode, i);
     std::cout << histogram_count_[i] << std::endl;
@@ -37,7 +37,7 @@ void Histogram::DisplayFreq(Mode mode) {
 // 1: XX
 // 2: XXX
 // 3: X
-void Histogram::DisplayHisto(Mode mode) {
+void Histogram::DisplayHisto(const Mode mode) const {
   for (int i = 0; i < (stop_ - start_ + 1); i++) {
     DisplayDataGroup(mode, i);
     for (int j = 0;
@@ -50,7 +50,7 @@ void Histogram::DisplayHisto(Mode mode) {
 }
 
 // prints out different data depending on the game mode argument
-void Histogram::DisplayDataGroup(Mode mode, int loop) {
+void Histogram::DisplayDataGroup(const Mode mode, const int loop) const {
   switch (mode) {
     case Mode::Dice: {
       PrintDiceSide(loop);
@@ -66,9 +66,11 @@ void Histogram::DisplayDataGroup(Mode mode, int loop) {
   }
 }
 
-void Histogram::PrintDiceSide(int i) { std::cout << (i + start_) << ":\t"; }
+void Histogram::PrintDiceSide(const int i) const {
+  std::cout << (i + start_) << ":\t";
+}
 
-void Histogram::PrintHeadsTails(int i) {
+void Histogram::PrintHeadsTails(const int i) const {
   switch (i) {
     case static_cast<int>(Side::Heads):
       std::cout << "Heads:\t";
@@ -81,14 +83,14 @@ void Histogram::PrintHeadsTails(int i) {
 
 // Adds a single value to the histogram object vector, and all values
 // will be stored in the value_list_ for possible later use
-void Histogram::AddValue(int value) {
+void Histogram::AddValue(const int value) {
   histogram_count_[value - start_]++;
   value_list_.push_back(value);
 }
 
 // changes the range of values that the histogram will store and
 // initializes all values to zero
-void Histogram::SetHistoRange(int start, int stop) {
+void Histogram::SetHistoRange(const int start, const int stop) {
   start_ = start;
   stop_ = stop;
 
@@ -97,7 +99,7 @@ void Histogram::SetHistoRange(int start, int stop) {
 }
 
 // finds the scaling factor for each histogram value
-double Histogram::ScaleHistoValue(int value) {
+double Histogram::ScaleHistoValue(const int value) const {
   int total_count =
       std::accumulate(histogram_count_.begin(), histogram_count_.end(), 0);
   return (59.0 / total_count * (value - total_count)) + 59;
