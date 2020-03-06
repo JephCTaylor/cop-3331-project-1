@@ -27,7 +27,7 @@ void Histogram::DisplayStats(Mode mode, std::vector<int> list, int lower,
 void Histogram::DisplayFreq(Mode mode) {
   for (int i = 0; i < (stop_ - start_ + 1); i++) {
     DisplayDataGroup(mode, i);
-    std::cout << ":\t" << histogram_count_[i] << std::endl;
+    std::cout << histogram_count_[i] << std::endl;
   }
   std::cout << std::endl;
 }
@@ -70,10 +70,10 @@ void Histogram::PrintDiceSide(int i) { std::cout << (i + start_) << ":\t"; }
 
 void Histogram::PrintHeadsTails(int i) {
   switch (i) {
-    case Heads:
+    case static_cast<int>(Side::Heads):
       std::cout << "Heads:\t";
       break;
-    case Tails:
+    case static_cast<int>(Side::Tails):
       std::cout << "Tails:\t";
       break;
   }

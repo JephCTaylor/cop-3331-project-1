@@ -4,14 +4,14 @@
 #include <string>
 #include <vector>
 
-#define COIN_SIDES 2
+constexpr auto kCoinSides = 2;
 
-enum Side { Heads, Tails };
+enum class Side { Heads, Tails };
 
 class aCoin {
  public:
-  std::string Toss();
   operator std::string();
+  std::string Toss();
 
   std::vector<int> toss_log_;
 };
