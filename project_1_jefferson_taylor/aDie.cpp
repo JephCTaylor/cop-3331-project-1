@@ -43,9 +43,3 @@ int aDie::GetDiceSides() const { return dice_sides_; }
 int aDie::GetLowestRoll() const { return lowest_roll_; }
 
 int aDie::GetHighestRoll() const { return highest_roll_; }
-
-// example of how to return a vector by value
-// std::vector<int> aDie::GetRollLog() {
-//    std::vector<int> result = roll_log_;
-//    return result;
-//}

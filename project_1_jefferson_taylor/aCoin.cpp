@@ -20,5 +20,4 @@ std::string aCoin::Toss() {
       std::cerr << "aCoin::Toss() didn't pick heads or tails.";
       break;
   }
-  return "";
 }
