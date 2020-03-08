@@ -16,7 +16,7 @@ class Histogram {
  private:
   int start_{0};
   int stop_{0};
-  std::vector<int> histogram_count_;
+  std::vector<int> frequency_count_;
   std::vector<int> value_list_;
 
   void DisplayFreq(const Mode mode) const;

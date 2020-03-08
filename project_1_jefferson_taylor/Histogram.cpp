@@ -27,7 +27,7 @@ void Histogram::DisplayStats(const Mode mode, std::vector<int> list,
 void Histogram::DisplayFreq(const Mode mode) const {
   for (int i = 0; i < (stop_ - start_ + 1); i++) {
     DisplayDataGroup(mode, i);
-    std::cout << histogram_count_[i] << std::endl;
+    std::cout << frequency_count_[i] << std::endl;
   }
   std::cout << std::endl;
 }
@@ -41,7 +41,7 @@ void Histogram::DisplayHisto(const Mode mode) const {
   for (int i = 0; i < (stop_ - start_ + 1); i++) {
     DisplayDataGroup(mode, i);
     for (int j = 0;
-         j < (ScaleHistoValue(histogram_count_[i] * HISTO_BAR_SCALE)); j++) {
+         j < (ScaleHistoValue(frequency_count_[i] * HISTO_BAR_SCALE)); j++) {
       std::cout << "X";
     }
     std::cout << std::endl;
@@ -84,7 +84,7 @@ void Histogram::PrintHeadsTails(const int i) const {
 // Adds a single value to the histogram object vector, and all values
 // will be stored in the value_list_ for possible later use
 void Histogram::AddValue(const int value) {
-  histogram_count_[value - start_]++;
+  frequency_count_[value - start_]++;
   value_list_.push_back(value);
 }
 
@@ -95,18 +95,18 @@ void Histogram::SetHistoRange(const int start, const int stop) {
   stop_ = stop;
 
   ResizeHistoVector();
-  std::fill(histogram_count_.begin(), histogram_count_.end(), 0);
+  std::fill(frequency_count_.begin(), frequency_count_.end(), 0);
 }
 
 // finds the scaling factor for each histogram value
 double Histogram::ScaleHistoValue(const int value) const {
   int total_count =
-      std::accumulate(histogram_count_.begin(), histogram_count_.end(), 0);
+      std::accumulate(frequency_count_.begin(), frequency_count_.end(), 0);
   return (59.0 / total_count * (value - total_count)) + 59;
 }
 
 // sizes histogram vector to the amount of different values
 void Histogram::ResizeHistoVector() {
   int size = stop_ - start_ + 1;
-  histogram_count_.resize(size, 0);
+  frequency_count_.resize(size, 0);
 }
