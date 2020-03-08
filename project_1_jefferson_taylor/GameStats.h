@@ -8,8 +8,8 @@
 
 class GameStats {
  public:
-  void DisplayPokerHands(aDeckOfCards &deck, const int hands,
-                         const int cards) const;
+  void DealHands(aDeckOfCards &deck, const int hands, const int cards,
+                 const bool replace_cards) const;
   void DisplayRollStats(const int rolls, aDie &dice, Histogram &histo) const;
   void DisplayTossStats(const int play_count, aCoin &coin,
                         Histogram &histo) const;

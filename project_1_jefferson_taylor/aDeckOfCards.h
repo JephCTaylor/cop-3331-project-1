@@ -54,12 +54,12 @@ class aDeckOfCards {
 
   std::vector<Card> drawn_;
   std::vector<Card> hand_;
-  std::array<Brand, kBrands> brands{Brand::Ace,   Brand::Two,   Brand::Three,
-                                    Brand::Four,  Brand::Five,  Brand::Six,
-                                    Brand::Seven, Brand::Eight, Brand::Nine,
-                                    Brand::Jack,  Brand::Queen, Brand::King};
-  std::array<Suit, kSuits> suits{Suit::Clubs, Suit::Diamonds, Suit::Hearts,
-                                 Suit::Spades};
+  std::array<Brand, kBrands> brands_{Brand::Ace,   Brand::Two,   Brand::Three,
+                                     Brand::Four,  Brand::Five,  Brand::Six,
+                                     Brand::Seven, Brand::Eight, Brand::Nine,
+                                     Brand::Jack,  Brand::Queen, Brand::King};
+  std::array<Suit, kSuits> suits_{Suit::Clubs, Suit::Diamonds, Suit::Hearts,
+                                  Suit::Spades};
 };
 
 #endif  // !ADECKOFCARD_H

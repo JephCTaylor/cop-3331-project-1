@@ -7,23 +7,11 @@
 #include <string>
 
 // deals out a cards to different players and prints out all the hands dealt
-// displays dealing out hands with and without replacement of drawn cards
-void GameStats::DisplayPokerHands(aDeckOfCards &deck, const int hands,
-                                  const int cards) const {
-  std::cout << hands << " Hands with replacement of cards:" << std::endl;
+void GameStats::DealHands(aDeckOfCards &deck, const int hands, const int cards,
+                          const bool replace_cards) const {
   for (int i = 0; i < hands; i++) {
     std::cout << "Hand " << i + 1 << ": ";
     deck.Draw(cards, true);
-    deck.DisplayHand();
-  }
-  std::cout << std::endl;
-
-  deck.ResetDeck();
-
-  std::cout << hands << " Hands without replacement of cards:" << std::endl;
-  for (int i = 0; i < hands; i++) {
-    std::cout << "Hand " << i + 1 << ": ";
-    deck.Draw(cards, false);
     deck.DisplayHand();
   }
   std::cout << std::endl;

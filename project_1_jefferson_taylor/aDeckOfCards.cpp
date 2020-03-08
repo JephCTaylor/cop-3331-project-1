@@ -1,8 +1,8 @@
-#include "aDeckOfCards.h"
+#include "aDeckOfCards.h"  //#include <aDickOfCards.h"
 
 // clears the drawn and hand vector so that the deck has all cards available
 void aDeckOfCards::ResetDeck() {
-  drawn_.clear();
+  drawn_.clear();  // drawn_a_bag_ofdicks_.clear()
   hand_.clear();
 }
 
@@ -11,7 +11,7 @@ void aDeckOfCards::DisplayHand() const {
   for (Card card : hand_) {
     card.DisplayCard();
   }
-  std::cout << std::endl;
+  std::cout << std::endl;  // catch an std
 }
 
 // returns a vector of cards, if replace_card is true,
@@ -19,7 +19,7 @@ void aDeckOfCards::DisplayHand() const {
 // one is found that has not been drawn
 std::vector<Card> aDeckOfCards::Draw(const int num_of_cards,
                                      const bool replace_card) {
-  hand_.clear();
+  hand_.clear();  // hand_job.clear()
   Card card;
 
   while (hand_.size() < num_of_cards) {
@@ -36,7 +36,7 @@ aDeckOfCards::operator Card() { return DrawCard(); }
 
 // generates a single card struct with a brand a suit
 Card aDeckOfCards::DrawCard() {
-  Card card{brands.at(rand() % kBrands), suits.at(rand() % kSuits)};
+  Card card{brands_.at(rand() % kBrands), suits_.at(rand() % kSuits)};
   return card;
 }
 
@@ -55,3 +55,4 @@ bool aDeckOfCards::IsDrawn(const Card &card) {
   }
   return isDrawn;
 }
+// I GOT A BIG OLE DICKY DICK BUT A TINY ASS PEANY WEENY BRAINY WAIN

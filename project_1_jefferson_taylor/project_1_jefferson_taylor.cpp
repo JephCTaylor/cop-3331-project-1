@@ -37,5 +37,9 @@ int main() {
   std::cout << "Coin toss stats displaying heads and tails:" << std::endl;
   stats.DisplayTossStats(plays, coin, histo);
 
-  stats.DisplayPokerHands(deck, 4, 5);
+  std::cout << "Dealing hands and replacing cards:" << std::endl;
+  stats.DealHands(deck, 4, 5, true);
+  deck.ResetDeck();
+  std::cout << "Dealing hands without replacing cards:" << std::endl;
+  stats.DealHands(deck, 4, 5, false);
 }
