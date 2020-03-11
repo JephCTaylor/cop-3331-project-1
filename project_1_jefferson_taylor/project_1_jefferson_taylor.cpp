@@ -29,10 +29,10 @@ int main() {
   stats.DisplayRollStats(plays, dice2, histo);
 
   std::cout << "Roll stats from first and second die summed:" << std::endl;
-  stats.SumDiceRolls(dice2, dice1, histo);
+  stats.CombineDiceRolls(dice2, dice1, histo, std::plus<int>());
 
   std::cout << "Roll stats from first and second die multipled:" << std::endl;
-  stats.MultiplyDiceRolls(dice1, dice2, histo);
+  stats.CombineDiceRolls(dice1, dice2, histo, std::multiplies<int>());
 
   std::cout << "Coin toss stats displaying heads and tails:" << std::endl;
   stats.DisplayTossStats(plays, coin, histo);

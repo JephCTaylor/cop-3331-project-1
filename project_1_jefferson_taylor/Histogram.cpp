@@ -9,12 +9,10 @@
 #include "aCoin.h"
 
 // prints the frequency counts and histogram
-void Histogram::DisplayStats(const Mode mode, std::vector<int> list,
-                             const int lower, const int upper) {
-  SetHistoRange(lower, upper);
-  for (int x : list) {
-    AddValue(x);
-  }
+void Histogram::DisplayStats(const Mode mode, std::vector<int> list) {
+  SetHistoRange(*std::min_element(list.begin(), list.end()),
+                *std::max_element(list.begin(), list.end()));
+  SetFreqList(list);
   DisplayFreq(mode);
   DisplayHisto(mode);
 }
@@ -81,11 +79,11 @@ void Histogram::PrintHeadsTails(const int i) const {
   }
 }
 
-// Adds a single value to the histogram object vector, and all values
-// will be stored in the value_list_ for possible later use
-void Histogram::AddValue(const int value) {
-  frequency_count_[value - start_]++;
-  value_list_.push_back(value);
+// sets the value list of the histogram class
+void Histogram::SetFreqList(std::vector<int> list) {
+  for (int value : list) {
+    frequency_count_.at(value - start_)++;
+  }
 }
 
 // changes the range of values that the histogram will store and

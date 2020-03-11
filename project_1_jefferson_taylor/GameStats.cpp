@@ -25,9 +25,7 @@ void GameStats::DisplayRollStats(const int rolls, aDie &dice,
   for (int i = 0; i < rolls; i++) {
     (int)dice;
   }
-  const int lower_bound = dice.GetLowestRoll();
-  const int upper_bound = dice.GetHighestRoll();
-  histo.DisplayStats(Mode::Dice, dice.roll_log_, lower_bound, upper_bound);
+  histo.DisplayStats(Mode::Dice, dice.roll_log_);
 }
 
 // simulates the flipping a coin a specified amount of times and prints the
@@ -37,39 +35,20 @@ void GameStats::DisplayTossStats(const int plays, aCoin &coin,
   for (int i = 0; i < plays; i++) {
     (std::string) coin;
   }
-  const int lower_bound = static_cast<int>(Side::Heads);
-  const int upper_bound = static_cast<int>(Side::Tails);
-  histo.DisplayStats(Mode::Coin, coin.toss_log_, lower_bound, upper_bound);
-}
-
-// the rolls logs from aDie arguments are summed and displayed by the histo
-void GameStats::SumDiceRolls(aDie &dice1, aDie &dice2, Histogram &histo) const {
-  std::vector<int> temp_log;
-  SwitchLargestDie(dice1, dice2);
-  temp_log.resize(dice1.roll_log_.size(), 0);
-
-  std::transform(dice1.roll_log_.begin(), dice1.roll_log_.end(),
-                 dice2.roll_log_.begin(), temp_log.begin(), std::plus<int>());
-
-  const int lower_bound = dice1.GetLowestRoll() + dice2.GetLowestRoll();
-  const int upper_bound = dice1.GetHighestRoll() + dice2.GetHighestRoll();
-  histo.DisplayStats(Mode::Dice, temp_log, lower_bound, upper_bound);
+  histo.DisplayStats(Mode::Coin, coin.toss_log_);
 }
 
 // the rolls logs from aDie arguments are multiplied and displayed by the histo
-void GameStats::MultiplyDiceRolls(aDie &dice1, aDie &dice2,
-                                  Histogram &histo) const {
+void GameStats::CombineDiceRolls(aDie &dice1, aDie &dice2, Histogram &histo,
+                                 const std::function<int(int, int)> &func) const {
   std::vector<int> temp_log;
   SwitchLargestDie(dice1, dice2);
   temp_log.resize(dice1.roll_log_.size(), 0);
 
   std::transform(dice1.roll_log_.begin(), dice1.roll_log_.end(),
-                 dice2.roll_log_.begin(), temp_log.begin(),
-                 std::multiplies<int>());
+                 dice2.roll_log_.begin(), temp_log.begin(), func);
 
-  const int lower_bound = dice1.GetLowestRoll() * dice2.GetLowestRoll();
-  const int upper_bound = dice1.GetHighestRoll() * dice2.GetHighestRoll();
-  histo.DisplayStats(Mode::Dice, temp_log, lower_bound, upper_bound);
+  histo.DisplayStats(Mode::Dice, temp_log);
 }
 
 // aDie with largest value range becomes dice1
