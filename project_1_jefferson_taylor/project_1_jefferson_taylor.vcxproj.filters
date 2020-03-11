@@ -33,6 +33,9 @@
     <ClCompile Include="aDeckOfCards.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="aCard.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Histogram.h">
@@ -48,6 +51,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="aDeckOfCards.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="aCard.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

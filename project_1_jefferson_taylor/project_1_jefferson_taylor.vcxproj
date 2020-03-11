@@ -147,6 +147,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="aCard.cpp" />
     <ClCompile Include="aCoin.cpp" />
     <ClCompile Include="aDeckOfCards.cpp" />
     <ClCompile Include="aDie.cpp" />
@@ -155,6 +156,7 @@
     <ClCompile Include="project_1_jefferson_taylor.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="aCard.h" />
     <ClInclude Include="aCoin.h" />
     <ClInclude Include="aDeckOfCards.h" />
     <ClInclude Include="aDie.h" />

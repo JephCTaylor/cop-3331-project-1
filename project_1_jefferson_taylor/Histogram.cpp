@@ -105,6 +105,5 @@ double Histogram::ScaleHistoValue(const int value) const {
 
 // sizes histogram vector to the amount of different values
 void Histogram::ResizeHistoVector() {
-  int size = stop_ - start_ + 1;
-  frequency_count_.resize(size, 0);
+  frequency_count_.resize(stop_ - start_ + 1, 0);
 }
