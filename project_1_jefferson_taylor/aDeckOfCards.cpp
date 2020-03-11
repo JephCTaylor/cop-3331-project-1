@@ -8,7 +8,7 @@ void aDeckOfCards::ResetDeck() {
 
 // displays all the cards in the object's hand vector
 void aDeckOfCards::DisplayHand() const {
-  for (Card card : hand_) {
+  for (aCard card : hand_) {
     card.DisplayCard();
   }
   std::cout << std::endl;  // catch an std
@@ -17,13 +17,12 @@ void aDeckOfCards::DisplayHand() const {
 // returns a vector of cards, if replace_card is true,
 // then it will continue to randomly select a card until
 // one is found that has not been drawn
-std::vector<Card> aDeckOfCards::Draw(const int num_of_cards,
-                                     const bool replace_card) {
+std::vector<aCard> aDeckOfCards::Draw(const int num_of_cards,
+                                      const bool replace_card) {
   hand_.clear();  // hand_job.clear()
-  Card card;
 
   while (hand_.size() < num_of_cards) {
-    card = DrawCard();
+    aCard card = DrawCard();
     if (!replace_card && IsDrawn(card)) {
       continue;
     }
@@ -32,20 +31,20 @@ std::vector<Card> aDeckOfCards::Draw(const int num_of_cards,
   return hand_;
 }
 
-aDeckOfCards::operator Card() { return DrawCard(); }
+aDeckOfCards::operator aCard() { return DrawCard(); }
 
 // generates a single card struct with a brand a suit
-Card aDeckOfCards::DrawCard() {
-  Card card{brands_.at(rand() % kBrands), suits_.at(rand() % kSuits)};
-  return card;
+aCard aDeckOfCards::DrawCard() {
+  return {static_cast<Brand>(rand() % kBrands),
+          static_cast<Suit>(rand() % kSuits)};
 }
 
 // checks if the card has already been drawn, if not, the card
 // will be added to list of drawn cards
-bool aDeckOfCards::IsDrawn(const Card &card) {
+bool aDeckOfCards::IsDrawn(const aCard &card) {
   bool isDrawn = false;
 
-  for (Card drawn_card : drawn_) {
+  for (aCard drawn_card : drawn_) {
     if (drawn_card.brand == card.brand && drawn_card.suit == card.suit) {
       isDrawn = true;
     }
@@ -55,4 +54,5 @@ bool aDeckOfCards::IsDrawn(const Card &card) {
   }
   return isDrawn;
 }
+
 // I GOT A BIG OLE DICKY DICK BUT A TINY ASS PEANY WEENY BRAINY WAIN

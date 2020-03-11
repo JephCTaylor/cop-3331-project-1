@@ -7,15 +7,15 @@ class aDeckOfCards {
  public:
   void ResetDeck();
   void DisplayHand() const;
-  std::vector<Card> Draw(const int num_of_cards, const bool replacement);
-  operator Card();
+  std::vector<aCard> Draw(const int num_of_cards, const bool replacement);
+  operator aCard();
 
  private:
-  Card DrawCard();
-  bool IsDrawn(const Card &card);
+  aCard DrawCard();
+  bool IsDrawn(const aCard &card);
 
-  std::vector<Card> drawn_;
-  std::vector<Card> hand_;
+  std::vector<aCard> drawn_;
+  std::vector<aCard> hand_;
 };
 
 #endif  // !ADECKOFCARD_H
