@@ -9,9 +9,10 @@
 // deals out a cards to different players and prints out all the hands dealt
 void GameStats::DealHands(aDeckOfCards &deck, const int hands, const int cards,
                           const bool replace_cards) const {
+  std::vector<aCard> hand;
   for (int i = 0; i < hands; i++) {
     std::cout << "Hand " << i + 1 << ": ";
-    deck.Draw(cards, true);
+    hand = deck.Draw(cards, replace_cards);
     deck.DisplayHand();
   }
   std::cout << std::endl;
@@ -22,8 +23,9 @@ void GameStats::DealHands(aDeckOfCards &deck, const int hands, const int cards,
 // graph
 void GameStats::DisplayRollStats(const int rolls, aDie &dice,
                                  Histogram &histo) const {
+  int dice_roll;
   for (int i = 0; i < rolls; i++) {
-    (int)dice;
+    dice_roll = dice;
   }
   histo.DisplayStats(Mode::Dice, dice.roll_log_);
 }
@@ -32,15 +34,17 @@ void GameStats::DisplayRollStats(const int rolls, aDie &dice,
 // frequency of heads or tails as well as a histogram
 void GameStats::DisplayTossStats(const int plays, aCoin &coin,
                                  Histogram &histo) const {
+  std::string coin_result;
   for (int i = 0; i < plays; i++) {
-    (std::string) coin;
+    coin_result = coin;
   }
   histo.DisplayStats(Mode::Coin, coin.toss_log_);
 }
 
 // the rolls logs from aDie arguments are multiplied and displayed by the histo
-void GameStats::CombineDiceRolls(aDie &dice1, aDie &dice2, Histogram &histo,
-                                 const std::function<int(int, int)> &func) const {
+void GameStats::CombineDiceRolls(
+    aDie &dice1, aDie &dice2, Histogram &histo,
+    const std::function<int(int, int)> &func) const {
   std::vector<int> temp_log;
   SwitchLargestDie(dice1, dice2);
   temp_log.resize(dice1.roll_log_.size(), 0);
