@@ -1,8 +1,8 @@
-#include "aDeckOfCards.h"  //#include <aDickOfCards.h"
+#include "aDeckOfCards.h"
 
 // clears the drawn and hand vector so that the deck has all cards available
 void aDeckOfCards::ResetDeck() {
-  drawn_.clear();  // drawn_a_bag_ofdicks_.clear()
+  drawn_.clear();
   hand_.clear();
 }
 
@@ -11,7 +11,7 @@ void aDeckOfCards::DisplayHand() const {
   for (aCard card : hand_) {
     card.DisplayCard();
   }
-  std::cout << std::endl;  // catch an std
+  std::cout << std::endl;
 }
 
 // returns a vector of cards, if replace_card is true,
@@ -19,7 +19,7 @@ void aDeckOfCards::DisplayHand() const {
 // one is found that has not been drawn
 std::vector<aCard> aDeckOfCards::Draw(const int num_of_cards,
                                       const bool replace_card) {
-  hand_.clear();  // hand_job.clear()
+  hand_.clear();
 
   while (hand_.size() < num_of_cards) {
     aCard card = DrawCard();
@@ -54,5 +54,3 @@ bool aDeckOfCards::IsDrawn(const aCard &card) {
   }
   return isDrawn;
 }
-
-// I GOT A BIG OLE DICKY DICK BUT A TINY ASS PEANY WEENY BRAINY WAIN

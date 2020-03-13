@@ -41,7 +41,7 @@ void GameStats::DisplayTossStats(const int plays, aCoin &coin,
   histo.DisplayStats(Mode::Coin, coin.toss_log_);
 }
 
-// the rolls logs from aDie arguments are multiplied and displayed by the histo
+// the rolls logs from aDie arguments are combined by the func argument
 void GameStats::CombineDiceRolls(
     aDie &dice1, aDie &dice2, Histogram &histo,
     const std::function<int(int, int)> &func) const {
@@ -55,7 +55,7 @@ void GameStats::CombineDiceRolls(
   histo.DisplayStats(Mode::Dice, temp_log);
 }
 
-// aDie with largest value range becomes dice1
+// aDie with largest value range becomes dice1 so that transform works
 void GameStats::SwitchLargestDie(aDie &dice1, aDie &dice2) const {
   if (dice1.roll_log_.size() < dice2.roll_log_.size()) {
     std::swap(dice1, dice2);

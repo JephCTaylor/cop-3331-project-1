@@ -8,7 +8,7 @@
 
 #include "aCoin.h"
 
-// prints the frequency counts and histogram
+// prints the frequency counts and histogram. Changes depending on mode
 void Histogram::DisplayStats(const Mode mode, std::vector<int> list) {
   SetHistoRange(*std::min_element(list.begin(), list.end()),
                 *std::max_element(list.begin(), list.end()));
