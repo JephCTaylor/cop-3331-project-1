@@ -32,7 +32,7 @@ struct aCard {
   Suit suit;
 
   const std::array<std::string, kBrands> brands{"A", "2", "3", "4", "5", "6",
-                                                 "7", "8", "9", "J", "Q", "K"};
+                                                "7", "8", "9", "J", "Q", "K"};
   const std::array<std::string, kSuits> suits{"S", "H", "D", "C"};
 };
 
