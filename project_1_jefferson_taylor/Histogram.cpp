@@ -10,8 +10,14 @@
 
 // prints the frequency counts and histogram. Changes depending on mode
 void Histogram::DisplayStats(const Mode mode, std::vector<int> list) {
-  SetHistoRange(*std::min_element(list.begin(), list.end()),
-                *std::max_element(list.begin(), list.end()));
+  if (mode == Mode::Coin) {
+    // if theres a coin flip and only tails itll make start_ = 1 and display all
+    // flips as heads
+    SetHistoRange(0, 1);
+  } else {
+    SetHistoRange(*std::min_element(list.begin(), list.end()),
+                  *std::max_element(list.begin(), list.end()));
+  }
   SetFreqList(list);
   DisplayFreq(mode);
   DisplayHisto(mode);
@@ -24,6 +30,7 @@ void Histogram::DisplayStats(const Mode mode, std::vector<int> list) {
 // 3: 1
 void Histogram::DisplayFreq(const Mode mode) const {
   for (int i = 0; i < (stop_ - start_ + 1); i++) {
+    if (!frequency_count_[i]) continue;
     DisplayDataGroup(mode, i);
     std::cout << frequency_count_[i] << std::endl;
   }
@@ -37,9 +44,10 @@ void Histogram::DisplayFreq(const Mode mode) const {
 // 3: X
 void Histogram::DisplayHisto(const Mode mode) const {
   for (int i = 0; i < (stop_ - start_ + 1); i++) {
+    if (!frequency_count_[i]) continue;
     DisplayDataGroup(mode, i);
-    for (int j = 0;
-         j < (ScaleHistoValue(frequency_count_[i] * HISTO_BAR_SCALE)); j++) {
+    for (int j = 0; j < (ScaleHistoValue(frequency_count_[i])); j++) {
+      if (j > kHistoMaxSize) continue;
       std::cout << "X";
     }
     std::cout << std::endl;
@@ -100,7 +108,7 @@ void Histogram::SetHistoRange(const int start, const int stop) {
 double Histogram::ScaleHistoValue(const int value) const {
   int total_count =
       std::accumulate(frequency_count_.begin(), frequency_count_.end(), 0);
-  return (59.0 / total_count * (value - total_count)) + 59;
+  return (kHistoScale / total_count * (value - total_count)) + kHistoScale;
 }
 
 // sizes histogram vector to the amount of different values
